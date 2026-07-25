@@ -262,7 +262,15 @@
     margin: 0; border-radius: 20px; overflow: hidden; aspect-ratio: 4/5;
     border: 1px solid var(--line-card); background: var(--bg-soft);
   }
+  .products-photo { position: relative; }
   .products-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+  /* Popisek dělá z fotky doklad kontextu místo dekorace — jinak na mobilu
+     splyne s produktovými kartami do jedné nerozlišené řady snímků. */
+  .products-photo figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 42px 16px 14px;
+    background: linear-gradient(to top, rgba(41,33,27,0.88) 20%, rgba(41,33,27,0));
+    color: #F6EDE3; font-size: 13px; line-height: 1.45; text-wrap: pretty;
+  }
   @media (max-width: 860px) {
     .products-head { grid-template-columns: 1fr; }
     .products-head .section-head { text-align: center; max-width: 640px; margin: 0 auto; }
@@ -272,6 +280,7 @@
     max-width: 1080px; margin: 0 auto;
     display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 20px;
   }
+  .rail-hint { display: none; }
   .product-card {
     background: var(--bg-card); border: 1px solid var(--line-card); border-radius: 20px;
     overflow: hidden; display: flex; flex-direction: column;
@@ -285,13 +294,76 @@
   .product-shot-tall { aspect-ratio: 1062 / 1527; }
   .product-shot img { width: 100%; height: 100%; object-fit: cover; }
   .product-body { padding: clamp(18px, 2.4vw, 24px); display: flex; flex-direction: column; flex: 1; }
+  .product-brand {
+    display: block; font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase;
+    color: var(--accent-dark); font-weight: 700; margin-bottom: 6px;
+  }
   .product-body h3 { font-weight: 600; font-size: 24px; margin: 0 0 10px; letter-spacing: 0.3px; text-wrap: balance; }
   .product-body p { font-size: 14.5px; line-height: 1.62; color: var(--body); margin: 0; text-wrap: pretty; }
   .product-rel {
     margin-top: auto; padding-top: 16px; font-size: 13px; color: var(--muted);
   }
   .product-rel a { font-weight: 700; border-bottom: 1px solid rgba(169,105,79,0.35); }
+  /* Bannery Bruno Vassari mají natištěné neklikatelné tlačítko „OBJEVTE SPF 40".
+     Tenhle odkaz je jeho pravdivý protějšek — vypadá jako akce a akcí je. */
+  .product-ask {
+    display: inline-flex; align-items: center; gap: 7px; min-height: 44px;
+    color: var(--accent-dark); border-bottom: 0;
+  }
+  .product-ask:hover { color: var(--accent); }
+  /* Dva snímky jsou hotové reklamy značky s vlastní vysázenou typografií včetně
+     natištěného tlačítka. Přiznaný původ z nich dělá citaci cizího materiálu —
+     bez něj web vydává cizí grafiku i její neklikatelné tlačítko za své. */
+  .product-note {
+    display: block; margin-top: 4px; font-size: 11.5px; line-height: 1.4;
+    color: var(--muted); font-style: italic;
+  }
   .products-cta { display: flex; justify-content: center; margin-top: 36px; }
+
+  /* ===== Produkty na mobilu =====
+     Do 700 px se z mřížky stává vodorovná lišta se snapem. Důvod: ve sloupci
+     měly čtyři karty 2 850 px (4,5 obrazovky) a fotka katalogu splývala
+     s produkty do jedné řady snímků. Karta je 72 % šířky ≈ 270 px, tedy skoro
+     přesně desktopových 255 px — proporce zůstávají, mění se jen směr čtení.
+     Následující karta vykukuje, aby bylo poznat, že se dá posouvat. */
+  @media (max-width: 700px) {
+    .products {
+      display: flex; gap: 14px; max-width: none;
+      overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-inline: calc(clamp(16px, 4vw, 64px) * -1);
+      padding: 4px clamp(16px, 4vw, 64px) 6px;
+      scroll-padding-inline: clamp(16px, 4vw, 64px);
+    }
+    .products::-webkit-scrollbar { display: none; }
+    /* Spodní hranice drží kartu čitelnou i na 320px displeji, kde by samotných
+       72 % dalo jen 197 px a vysázený text na bannerech by se srazil. */
+    .product-card { flex: 0 0 max(72%, 215px); scroll-snap-align: start; }
+    .product-card:hover { transform: none; box-shadow: none; }
+
+    .rail-hint { display: flex; justify-content: center; margin: 6px 0 0; }
+    .rail-dots { display: flex; }
+    /* Tečka je 7px, ale klikací plocha 25×35px — kdyby vypadala jako ovládání
+       a nešla zmáčknout, byla by to stejná lež jako natištěné tlačítko na banneru. */
+    .rail-dots button {
+      appearance: none; -webkit-appearance: none; background: none; border: 0;
+      padding: 18px 9px; cursor: pointer; display: grid; place-items: center;
+    }
+    .rail-dots button::before {
+      content: ''; display: block; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--line-strong); transition: background .2s ease, transform .2s ease;
+    }
+    .rail-dots button[aria-current="true"]::before { background: var(--accent); transform: scale(1.3); }
+
+    /* Fotka katalogu jde na mobilu do kraje a dostane popisek — tím je zřejmé,
+       že je to prostředí salonu, ne pátý produkt v řadě. */
+    .products-photo {
+      max-width: none; margin-inline: calc(clamp(16px, 4vw, 64px) * -1);
+      aspect-ratio: 16/10; border-radius: 0; border-left: 0; border-right: 0;
+    }
+    .products-head { margin-bottom: clamp(26px, 5vw, 36px); }
+  }
 
   /* ===== Doplňkové služby ===== */
   .extras { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
@@ -708,7 +780,7 @@
     <div class="process-copy">
       <span class="eyebrow">Jak péče probíhá</span>
       <h2>Kompletní rituál péče o pleť</h2>
-      <p>Kosmetická péče je u nás celostní prožitek — od pečlivého čištění až po relaxační masáž hlavy a dekoltu. Odcházíte s odpočatou a rozzářenou pletí.</p>
+      <p>Kosmetická péče je u nás celostní prožitek — od pečlivého čištění až po relaxační masáž obličeje. Odcházíte s odpočatou a rozzářenou pletí.</p>
       <a class="btn btn-accent btn-process" href="tel:+420775502224" aria-label="Rezervovat termín telefonicky na +420 775 502 224"><span aria-hidden="true">✆</span> Rezervovat termín</a>
     </div>
     <ol class="steps">
@@ -732,16 +804,19 @@
     </div>
     <figure class="products-photo">
       <img src="Fotky/bruno_katalog.JPEG" alt="Katalog kosmetiky Bruno Vassari" loading="lazy">
+      <figcaption>Katalog Bruno Vassari — v salonu si spolu nalistujeme, co vaší pleti sedí.</figcaption>
     </figure>
   </div>
 
-  <div class="products">
+  <div class="products-rail">
+    <div class="products" role="group" aria-label="Produkty ze salonu">
     <article class="product-card">
       <div class="product-shot">
         <img src="Fotky/phyris-forest.jpg" alt="PHYRIS FoREST — sérum Elixir a lehký krém Light Cream" loading="lazy">
       </div>
       <div class="product-body">
-        <h3>PHYRIS FoREST</h3>
+        <span class="product-brand">Phyris</span>
+        <h3>FoREST</h3>
         <p>Sérum <strong>FoREST Elixir</strong> a lehký krém <strong>FoREST Light Cream</strong> pro pleť unavenou městem — chrání ji před stresem městského prostředí a zlepšují barevný tón. Se silou lesa: výtažek z mechu a houba Chaga.</p>
         <p class="product-rel">Navazuje na péči <a href="#kosmeticka-pece">Procházka lesem – Forest</a></p>
       </div>
@@ -752,7 +827,8 @@
         <img src="Fotky/phyris-see-change.jpg" alt="PHYRIS SEE CHANGE — kolagenový krém, sérum v kapslích a tělová péče" loading="lazy">
       </div>
       <div class="product-body">
-        <h3>PHYRIS See Change</h3>
+        <span class="product-brand">Phyris</span>
+        <h3>See Change</h3>
         <p>Na obličej <strong>kolagenový krém</strong> a <strong>sérum v kapslích</strong>, na tělo zpevňující <strong>See Change Body</strong>. Řada s mořskými řasami a minerály intenzivně hydratuje a podporuje regeneraci pokožky.</p>
         <p class="product-rel">Navazuje na péči <a href="#kosmeticka-pece">Hloubková regenerace – See Change</a></p>
       </div>
@@ -763,9 +839,10 @@
         <img src="Fotky/product.JPG" alt="Bruno Vassari City &amp; Beach SPF 40 — krém s vysokou ochranou pro každodenní použití" loading="lazy">
       </div>
       <div class="product-body">
-        <h3>Bruno Vassari City &amp; Beach</h3>
+        <span class="product-brand">Bruno Vassari</span>
+        <h3>City &amp; Beach</h3>
         <p>Opalovací krém <strong>SPF 40</strong> na obličej — lehká textura a vysoká ochrana na každý den, ve městě i u moře. Letní must-have, na který se vyplatí myslet celoročně.</p>
-        <p class="product-rel">Zeptejte se na něj při objednání</p>
+        <p class="product-rel"><a class="product-ask" href="tel:+420775502224" aria-label="Zeptat se na krém City &amp; Beach telefonicky na +420 775 502 224"><span aria-hidden="true">✆</span> Zeptat se na produkt</a><span class="product-note">Obrázek: propagační materiál Bruno Vassari</span></p>
       </div>
     </article>
 
@@ -774,11 +851,14 @@
         <img src="Fotky/tonikum_bruno.JPEG" alt="Bruno Vassari LAB Biotics Daily Mist Toner — tonizační mlha ve spreji" loading="lazy">
       </div>
       <div class="product-body">
-        <h3>Bruno Vassari LAB Biotics</h3>
+        <span class="product-brand">Bruno Vassari</span>
+        <h3>LAB Biotics</h3>
         <p><strong>Daily Mist Toner</strong> — tonizační mlha ve spreji s probiotickou technologií, vyvinutá ve spolupráci s dermatology. Použijete ji trojím způsobem: jako tonikum, jako osvěžující letní mist i jako fixátor make-upu.</p>
-        <p class="product-rel">Zeptejte se na něj při objednání</p>
+        <p class="product-rel"><a class="product-ask" href="tel:+420775502224" aria-label="Zeptat se na tonikum LAB Biotics telefonicky na +420 775 502 224"><span aria-hidden="true">✆</span> Zeptat se na produkt</a><span class="product-note">Obrázek: propagační materiál Bruno Vassari</span></p>
       </div>
     </article>
+    </div>
+    <div class="rail-hint"><div class="rail-dots"></div></div>
   </div>
 
   <div class="products-cta">
@@ -917,6 +997,55 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') menu.open = false;
     });
+  })();
+
+  /* Tečky pod produktovou lištou: ukazují pozici a zároveň na ni skáčou.
+     Bez JS se tečky vůbec nevykreslí a lišta se posouvá prstem jako předtím —
+     nic se neztratí, jen zmizí ukazatel. */
+  (function () {
+    var rail = document.querySelector('.products');
+    var dots = document.querySelector('.rail-dots');
+    if (!rail || !dots) return;
+    var cards = rail.querySelectorAll('.product-card');
+    var built = 0;
+    var klidnyRezim = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function scrollable() { return rail.scrollWidth - rail.clientWidth > 8; }
+
+    function build() {
+      if (!scrollable()) { dots.innerHTML = ''; built = 0; return; }
+      if (built === cards.length) return;
+      dots.innerHTML = '';
+      for (var i = 0; i < cards.length; i++) dots.appendChild(dot(i));
+      built = cards.length;
+      mark();
+    }
+
+    function dot(i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Produkt ' + (i + 1) + ' ze ' + cards.length);
+      b.addEventListener('click', function () {
+        rail.scrollTo({
+          left: cards[i].offsetLeft - cards[0].offsetLeft,
+          behavior: klidnyRezim.matches ? 'auto' : 'smooth'
+        });
+      });
+      return b;
+    }
+
+    function mark() {
+      if (!built) return;
+      var max = rail.scrollWidth - rail.clientWidth;
+      var ratio = max > 0 ? rail.scrollLeft / max : 0;
+      var i = Math.round(ratio * (cards.length - 1));
+      var all = dots.children;
+      for (var j = 0; j < all.length; j++) all[j].setAttribute('aria-current', j === i ? 'true' : 'false');
+    }
+
+    rail.addEventListener('scroll', mark, { passive: true });
+    window.addEventListener('resize', build);
+    build();
   })();
 </script>
 
