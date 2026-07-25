@@ -263,26 +263,28 @@
   .steps .text { font-size: 15px; line-height: 1.5; color: var(--ink-soft); padding-top: 5px; text-wrap: pretty; }
 
   /* ===== Produkty ===== */
-  .product-inner {
-    max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap;
-    gap: clamp(28px, 5vw, 64px); align-items: center;
+  .products {
+    max-width: 1080px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px;
   }
-  /* The banner carries its own baked-in typography — shown whole, never
-     cropped, and capped so it doesn't outshout the section's own heading. */
-  .product-media { flex: 0 1 320px; min-width: 0; width: 100%; max-width: 380px; margin: 0 auto; }
-  .product-media img { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 44px rgba(120,85,60,0.2); }
-  .product-copy { flex: 1 1 380px; min-width: 0; }
-  .product-copy h2 {
-    font-weight: 500; font-size: clamp(30px, 4.2vw, 52px); margin: 14px 0 16px;
-    letter-spacing: -0.5px; text-wrap: balance;
+  .product-card {
+    background: var(--bg-card); border: 1px solid var(--line-card); border-radius: 20px;
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .25s ease, box-shadow .25s ease;
   }
-  .product-copy p { font-size: 16px; line-height: 1.65; color: var(--body); margin: 0 0 18px; text-wrap: pretty; }
-  .product-tip {
-    background: var(--bg-card); border: 1px solid var(--line-card); border-radius: 16px;
-    padding: 16px 20px; font-size: 15px; line-height: 1.55; color: var(--ink-soft);
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(120,85,60,0.14); }
+  /* All three shots are natively 3:4 (900×1200 and 600×800), so cover crops
+     nothing — including the SPF banner, whose baked-in text must stay whole. */
+  .product-shot { width: 100%; aspect-ratio: 3/4; background: var(--bg-soft); }
+  .product-shot img { width: 100%; height: 100%; object-fit: cover; }
+  .product-body { padding: clamp(18px, 2.4vw, 24px); display: flex; flex-direction: column; flex: 1; }
+  .product-body h3 { font-weight: 600; font-size: 24px; margin: 0 0 10px; letter-spacing: 0.3px; text-wrap: balance; }
+  .product-body p { font-size: 14.5px; line-height: 1.62; color: var(--body); margin: 0; text-wrap: pretty; }
+  .product-rel {
+    margin-top: auto; padding-top: 16px; font-size: 13px; color: var(--muted);
   }
-  .product-tip strong { color: var(--accent-dark); }
-  .product-copy .btn { margin-top: 20px; }
+  .product-rel a { font-weight: 700; border-bottom: 1px solid rgba(169,105,79,0.35); }
+  .products-cta { display: flex; justify-content: center; margin-top: 36px; }
 
   /* ===== Doplňkové služby ===== */
   .extras { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
@@ -362,15 +364,37 @@
   .footer-meta { font-size: 13.5px; color: #B3A493; }
   .footer-meta a { color: var(--accent-light); font-weight: 700; }
 
+  /* ===== WhatsApp ===== */
+  .ico-wa { width: 1.15em; height: 1.15em; flex-shrink: 0; }
+  .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn-whatsapp {
+    gap: 10px; min-height: 64px; padding: 0 26px; font-weight: 800;
+    font-size: clamp(16px, 3.4vw, 18px);
+    background: transparent; color: var(--accent-light);
+    border: 1px solid rgba(224,180,145,0.55);
+  }
+  .btn-whatsapp:hover { background: rgba(224,180,145,0.14); color: var(--bg); }
+
   /* ===== Floating mobile CTA ===== */
-  .floating-call {
+  .floating-bar {
     position: fixed; bottom: 18px; left: 16px; right: 16px; z-index: 60;
+    display: flex; gap: 10px;
+  }
+  .floating-call {
+    flex: 1 1 auto; min-width: 0;
     display: inline-flex; align-items: center; justify-content: center; gap: 10px;
     min-height: 56px; background: var(--accent); color: var(--bg-card);
     border-radius: 100px; font-weight: 800; font-size: 16.5px;
     box-shadow: 0 12px 30px rgba(120,85,60,0.45);
   }
   .floating-call:hover { background: var(--accent-dark); color: var(--bg-card); }
+  .floating-wa {
+    flex: 0 0 56px; width: 56px; min-height: 56px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #25D366; color: #fff; border-radius: 100px; font-size: 24px;
+    box-shadow: 0 12px 30px rgba(37,211,102,0.42);
+  }
+  .floating-wa:hover { background: #1EBE5A; color: #fff; }
 
   @media (max-width: 860px) {
     .nav-desktop { display: none; }
@@ -378,7 +402,7 @@
     footer { padding-bottom: 104px; }
   }
   @media (min-width: 861px) {
-    .floating-call { display: none; }
+    .floating-bar { display: none; }
   }
   /* Below ~430px the "Kosmetika" tag no longer fits beside the call button
      and slides under it — drop it, the wordmark alone still reads. */
@@ -423,8 +447,10 @@
       <div class="menu-panel">
         <a href="#osetreni">Ošetření</a>
         <a href="#doplnky">Doplňkové služby</a>
+        <a href="#produkty">Produkty</a>
         <a href="#galerie">Ze salonu</a>
         <a href="#kontakt">Kontakt</a>
+        <a href="https://wa.me/420775502224" target="_blank" rel="noopener">Napsat na WhatsApp</a>
       </div>
     </details>
   </div>
@@ -442,7 +468,7 @@
       </a>
       <a class="btn btn-outline btn-hero-ghost" href="#osetreni">Prohlédnout ošetření</a>
     </div>
-    <p class="hero-note">Rezervace pouze telefonicky — <a href="tel:+420775502224">+420 775 502 224</a></p>
+    <p class="hero-note">Rezervace telefonicky nebo přes <a href="https://wa.me/420775502224" target="_blank" rel="noopener">WhatsApp</a> — <a href="tel:+420775502224">+420 775 502 224</a></p>
   </div>
 
   <div class="hero-media">
@@ -692,17 +718,49 @@
 
 <!-- ===== PRODUKTY ===== -->
 <section class="section" id="produkty">
-  <div class="product-inner">
-    <div class="product-media">
-      <img src="Fotky/product.JPG" alt="Bruno Vassari City &amp; Beach SPF 40 — krém s vysokou ochranou pro každodenní použití" loading="lazy">
-    </div>
-    <div class="product-copy">
-      <span class="eyebrow">Produkty ze salonu</span>
-      <h2>Péče, která pokračuje i doma</h2>
-      <p>Ošetření je začátek — o výsledek se stará každodenní péče mezi návštěvami. Poradím vám, co vaší pleti opravdu sedí, a kosmetiku Phyris i Bruno Vassari si můžete odnést rovnou ze salonu.</p>
-      <p class="product-tip"><strong>Letní tip:</strong> Bruno Vassari City &amp; Beach SPF 40 — lehká textura a vysoká ochrana na každý den. Zeptejte se na něj při objednání.</p>
-      <a class="btn btn-accent btn-process" href="tel:+420775502224" aria-label="Zeptat se na produkty telefonicky na +420 775 502 224"><span aria-hidden="true">✆</span> Zeptat se na produkty</a>
-    </div>
+  <div class="section-head" style="margin-bottom: 40px;">
+    <span class="eyebrow">Produkty ze salonu</span>
+    <h2>Péče, která pokračuje i doma</h2>
+    <p>Ošetření je začátek — o výsledek se stará každodenní péče mezi návštěvami. Poradím vám, co vaší pleti opravdu sedí, a kosmetiku Phyris i Bruno Vassari si můžete odnést rovnou ze salonu.</p>
+  </div>
+
+  <div class="products">
+    <article class="product-card">
+      <div class="product-shot">
+        <img src="Fotky/phyris-forest.jpg" alt="PHYRIS FoREST — sérum Elixir a lehký krém Light Cream" loading="lazy">
+      </div>
+      <div class="product-body">
+        <h3>PHYRIS FoREST</h3>
+        <p>Sérum <strong>FoREST Elixir</strong> a lehký krém <strong>FoREST Light Cream</strong> pro pleť unavenou městem — chrání ji před stresem městského prostředí a zlepšují barevný tón. Se silou lesa: výtažek z mechu a houba Chaga.</p>
+        <p class="product-rel">Navazuje na ošetření <a href="#osetreni">Procházka lesem – Forest</a></p>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <div class="product-shot">
+        <img src="Fotky/phyris-see-change.jpg" alt="PHYRIS SEE CHANGE — kolagenový krém, sérum v kapslích a tělová péče" loading="lazy">
+      </div>
+      <div class="product-body">
+        <h3>PHYRIS See Change</h3>
+        <p>Na obličej <strong>kolagenový krém</strong> a <strong>sérum v kapslích</strong>, na tělo zpevňující <strong>See Change Body</strong>. Řada s mořskými řasami a minerály intenzivně hydratuje a podporuje regeneraci pokožky.</p>
+        <p class="product-rel">Navazuje na ošetření <a href="#osetreni">Hloubková regenerace – See Change</a></p>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <div class="product-shot">
+        <img src="Fotky/product.JPG" alt="Bruno Vassari City &amp; Beach SPF 40 — krém s vysokou ochranou pro každodenní použití" loading="lazy">
+      </div>
+      <div class="product-body">
+        <h3>Bruno Vassari City &amp; Beach</h3>
+        <p>Opalovací krém <strong>SPF 40</strong> na obličej — lehká textura a vysoká ochrana na každý den, ve městě i u moře. Letní must-have, na který se vyplatí myslet celoročně.</p>
+        <p class="product-rel">Zeptejte se na něj při objednání</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="products-cta">
+    <a class="btn btn-accent btn-process" href="tel:+420775502224" aria-label="Zeptat se na produkty telefonicky na +420 775 502 224"><span aria-hidden="true">✆</span> Zeptat se na produkty</a>
   </div>
 </section>
 
@@ -783,16 +841,22 @@
     <div class="contact-copy">
       <span class="eyebrow">Objednání</span>
       <h2>Zavolejte a domluvíme termín přímo pro vás</h2>
-      <p>Ráda vám poradím s výběrem ošetření podle typu vaší pleti. Rezervace probíhá telefonicky — ozvěte se a najdeme čas, který vám vyhovuje.</p>
-      <a class="btn btn-phone" href="tel:+420775502224" aria-label="Zavolat na +420 775 502 224">
-        <span aria-hidden="true" style="font-size: 22px;">✆</span> +420 775 502 224
-      </a>
+      <p>Ráda vám poradím s výběrem ošetření podle typu vaší pleti. Zavolejte mi, nebo napište na WhatsApp — najdeme čas, který vám vyhovuje.</p>
+      <div class="contact-actions">
+        <a class="btn btn-phone" href="tel:+420775502224" aria-label="Zavolat na +420 775 502 224">
+          <span aria-hidden="true" style="font-size: 22px;">✆</span> +420 775 502 224
+        </a>
+        <a class="btn btn-whatsapp" href="https://wa.me/420775502224" target="_blank" rel="noopener" aria-label="Napsat na WhatsApp číslo +420 775 502 224">
+          <svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+          WhatsApp
+        </a>
+      </div>
     </div>
     <div class="contact-cards">
       <div class="contact-card">
         <div class="k">Adresa</div>
         <div class="v">Thámova 191/21<br>Praha 8 – Karlín</div>
-        <a class="maplink" href="https://maps.google.com/?q=Thámova+191/21,+Praha+8+Karlín" target="_blank" rel="noopener">Zobrazit na mapě <span aria-hidden="true">↗</span></a>
+        <a class="maplink" href="https://www.google.com/maps/place/P%C3%A9%C4%8De+pro+V%C3%A1s/@50.0936384,14.4488901,17z/data=!3m1!4b1!4m6!3m5!1s0x470b94a488cd46d7:0xce386c428b9d5861!8m2!3d50.093635!4d14.451465!16s%2Fg%2F11hc_ft3yh" target="_blank" rel="noopener">Zobrazit na mapě <span aria-hidden="true">↗</span></a>
       </div>
       <div class="contact-card">
         <div class="k">E-mail</div>
@@ -812,13 +876,18 @@
       <span class="name">Péče PRO VÁS</span>
       <span class="tag">Kosmetika</span>
     </div>
-    <div class="footer-meta">Praha 8 – Karlín · <a href="tel:+420775502224">+420 775 502 224</a></div>
+    <div class="footer-meta">Praha 8 – Karlín · <a href="tel:+420775502224">+420 775 502 224</a> · <a href="https://wa.me/420775502224" target="_blank" rel="noopener">WhatsApp</a></div>
   </div>
 </footer>
 
-<a class="floating-call" href="tel:+420775502224" aria-label="Objednat telefonicky na +420 775 502 224">
-  <span aria-hidden="true" style="font-size: 19px;">✆</span> Objednat telefonicky
-</a>
+<div class="floating-bar">
+  <a class="floating-call" href="tel:+420775502224" aria-label="Objednat telefonicky na +420 775 502 224">
+    <span aria-hidden="true" style="font-size: 19px;">✆</span> Objednat telefonicky
+  </a>
+  <a class="floating-wa" href="https://wa.me/420775502224" target="_blank" rel="noopener" aria-label="Napsat na WhatsApp">
+    <svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+  </a>
+</div>
 
 <script>
   // Brand filter — mirrors the design's showPhyris / showBruno state.
