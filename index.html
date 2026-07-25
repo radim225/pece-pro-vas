@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Péče PRO VÁS · Kosmetika Praha 8 – Karlín</title>
-<meta name="description" content="Kosmetický salon Péče PRO VÁS v Praze 8 – Karlíně. Profesionální ošetření pleti značkami Phyris a Bruno Vassari, úprava obočí a řas, depilace. Objednávky telefonicky.">
+<meta name="description" content="Kosmetický salon Péče PRO VÁS v Praze 8 – Karlíně. Profesionální kosmetická péče o pleť značkami Phyris a Bruno Vassari, úprava obočí a řas, depilace. Objednávky telefonicky.">
 <meta name="theme-color" content="#F4EBE0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,7 +71,7 @@
   .nav-desktop { display: flex; align-items: center; gap: clamp(6px, 1.6vw, 22px); }
   .navlink {
     display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px;
-    color: var(--muted-2); font-size: 14px; font-weight: 700;
+    color: var(--muted-2); font-size: 14px; font-weight: 700; white-space: nowrap;
   }
   .navlink:hover { color: var(--accent); }
 
@@ -394,18 +394,27 @@
   }
   .floating-wa:hover { background: #1EBE5A; color: #fff; }
 
-  @media (max-width: 860px) {
+  /* Hamburger až do 1000 px. Původní hranice byla 860 px, jenže dvouslovný
+     popisek "Kosmetická péče" se v menu mezi 861–1000 px lámal na dva řádky;
+     samotný nowrap by zase natlačil nav na tag "KOSMETIKA" (kolize 23 px). */
+  @media (max-width: 1000px) {
     .nav-desktop { display: none; }
     .nav-mobile { display: flex; }
     footer { padding-bottom: 104px; }
   }
-  @media (min-width: 861px) {
+  @media (min-width: 1001px) {
     .floating-bar { display: none; }
   }
   /* Below ~430px the "Kosmetika" tag no longer fits beside the call button
      and slides under it — drop it, the wordmark alone still reads. */
   @media (max-width: 430px) {
     .topbar .brandmark .tag { display: none; }
+  }
+  /* Pod ~360 px (iPhone SE apod.) přerůstal wordmark pod tlačítko "Zavolat"
+     o ~20 px. Zmenšení písma a odsazení tlačítka vejde obojí vedle sebe. */
+  @media (max-width: 360px) {
+    .topbar .brandmark .name { font-size: 19px; }
+    .btn-call-mobile { padding: 0 14px; font-size: 14px; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -418,7 +427,7 @@
 </head>
 <body>
 
-<a class="skip" href="#osetreni">Přejít na ošetření</a>
+<a class="skip" href="#kosmeticka-pece">Přejít na kosmetickou péči</a>
 
 <!-- ===== TOP BAR ===== -->
 <header class="topbar">
@@ -428,7 +437,7 @@
   </a>
 
   <nav class="nav-desktop">
-    <a class="navlink" href="#osetreni">Ošetření</a>
+    <a class="navlink" href="#kosmeticka-pece">Kosmetická péče</a>
     <a class="navlink" href="#doplnky">Doplňkové služby</a>
     <a class="navlink" href="#kontakt">Kontakt</a>
     <a class="btn btn-accent btn-nav" href="tel:+420775502224" aria-label="Zavolat na +420 775 502 224">
@@ -443,7 +452,7 @@
     <details style="position: relative;">
       <summary class="menu-toggle" aria-label="Otevřít menu">☰</summary>
       <div class="menu-panel">
-        <a href="#osetreni">Ošetření</a>
+        <a href="#kosmeticka-pece">Kosmetická péče</a>
         <a href="#doplnky">Doplňkové služby</a>
         <a href="#produkty">Produkty ze salonu</a>
         <a href="#kontakt">Kontakt</a>
@@ -458,19 +467,19 @@
   <div class="hero-copy">
     <span class="eyebrow-pill">Kosmetický salon · Praha 8 – Karlín</span>
     <h1>Péči o&nbsp;<em>Vás</em><br>nechte na&nbsp;nás</h1>
-    <p class="lede">Kosmetické služby šité přímo na míru vaší pleti. Profesionální ošetření značkami <strong>Phyris</strong> a <strong>Bruno Vassari</strong> v útulném prostředí karlínského salonu.</p>
+    <p class="lede">Kosmetické služby šité přímo na míru vaší pleti. Profesionální péče značkami <strong>Phyris</strong> a <strong>Bruno Vassari</strong> v útulném prostředí karlínského salonu.</p>
     <div class="hero-actions">
       <a class="btn btn-accent btn-hero" href="tel:+420775502224" aria-label="Objednat telefonicky na +420 775 502 224">
         <span aria-hidden="true" style="font-size: 18px;">✆</span> Objednat telefonicky
       </a>
-      <a class="btn btn-outline btn-hero-ghost" href="#osetreni">Prohlédnout ošetření</a>
+      <a class="btn btn-outline btn-hero-ghost" href="#kosmeticka-pece">Prohlédnout nabídku péče</a>
     </div>
     <p class="hero-note">Rezervace telefonicky nebo přes <a href="https://wa.me/420775502224" target="_blank" rel="noopener">WhatsApp</a> — <a href="tel:+420775502224">+420 775 502 224</a></p>
   </div>
 
   <div class="hero-media">
     <div class="hero-photo">
-      <img src="Fotky/main.JPG" alt="Detail pleti — srovnání stavu před ošetřením a po něm" loading="eager" fetchpriority="high">
+      <img src="Fotky/main.JPG" alt="Detail pleti — srovnání stavu před návštěvou salonu a po ní" loading="eager" fetchpriority="high">
       <div class="hero-badge">
         <div class="big">na míru</div>
         <div class="small">každé pleti</div>
@@ -484,12 +493,12 @@
   <div>
     <div class="icon" aria-hidden="true">❋</div>
     <h3>Značková kosmetika</h3>
-    <p>Ošetření prémiovými řadami Phyris a Bruno Vassari s aktivními účinnými látkami.</p>
+    <p>Kosmetická péče prémiovými řadami Phyris a Bruno Vassari s aktivními účinnými látkami.</p>
   </div>
   <div>
     <div class="icon" aria-hidden="true">✿</div>
     <h3>Individuální přístup</h3>
-    <p>Každé ošetření volím podle typu a aktuálního stavu vaší pleti — nic univerzálního.</p>
+    <p>Péči volím vždy podle typu a aktuálního stavu vaší pleti — nic univerzálního.</p>
   </div>
   <div>
     <div class="icon" aria-hidden="true">❀</div>
@@ -499,11 +508,11 @@
 </section>
 
 <!-- ===== TREATMENTS ===== -->
-<section class="section" id="osetreni">
+<section class="section" id="kosmeticka-pece">
   <div class="section-head">
     <span class="eyebrow">Kosmetická péče</span>
-    <h2>Ošetření na míru vaší pleti</h2>
-    <p>Vyberte značku a najděte ošetření, které odpovídá potřebám vaší pleti. Každá procedura zahrnuje kompletní péči od čištění po závěrečnou masáž.</p>
+    <h2>Kosmetická péče na míru vaší pleti</h2>
+    <p>Vyberte značku a najděte kosmetickou péči, která odpovídá potřebám vaší pleti. Každá procedura je kompletní — od čištění po závěrečnou masáž.</p>
   </div>
 
   <div class="tabs" role="group" aria-label="Filtr podle značky">
@@ -526,9 +535,9 @@
             <h4>Hydratace pleti</h4>
             <span class="duration">90 min</span>
           </div>
-          <p class="lead">Hydratační ošetření vyplní a okamžitě hydratuje pleť.</p>
+          <p class="lead">Hydratační péče vyplní a okamžitě hydratuje pleť.</p>
           <details>
-            <summary>Celý popis ošetření <span aria-hidden="true">›</span></summary>
+            <summary>Celý popis péče <span aria-hidden="true">›</span></summary>
             <p class="rest">První pomoc u jemných vrásek z dehydratace. Nové složení s kyselinou hyaluronovou doplňuje zásoby vody až třemi způsoby: okamžité zvlhčení, dokonalá hydratace díky mikrokapslím s postupným uvolňováním a okamžitá výplň vrásky vodou.</p>
           </details>
           <div class="card-foot">
@@ -542,9 +551,9 @@
             <h4>Omlazení pleti – Perfect Age</h4>
             <span class="duration">110 min</span>
           </div>
-          <p class="lead">Intenzivní omlazující ošetření pro hloubkovou stimulaci buněk — unikátní elixír mládí.</p>
+          <p class="lead">Intenzivní omlazující péče pro hloubkovou stimulaci buněk — unikátní elixír mládí.</p>
           <details>
-            <summary>Celý popis ošetření <span aria-hidden="true">›</span></summary>
+            <summary>Celý popis péče <span aria-hidden="true">›</span></summary>
             <p class="rest">Řada Perfect Age obsahuje extrakty z květů švýcarských jabloní. Kmenové buňky stimulují vlastní buňky kůže, výsledkem je kompletní regenerace tkáně a viditelné omlazení pleti.</p>
           </details>
           <div class="card-foot">
@@ -558,9 +567,9 @@
             <h4>Hloubková regenerace – See Change</h4>
             <span class="duration">90 min</span>
           </div>
-          <p class="lead">Nejnovější generace ošetření s aktivními látkami.</p>
+          <p class="lead">Nejnovější generace péče s aktivními látkami.</p>
           <details>
-            <summary>Celý popis ošetření <span aria-hidden="true">›</span></summary>
+            <summary>Celý popis péče <span aria-hidden="true">›</span></summary>
             <p class="rest">See Change obsahuje široké spektrum mořských řas a vysoce účinné minerály, které zklidňují pokožku, zvyšují regeneraci a intenzivně hydratují. Vhodné pro všechny typy pleti. Profesionální a ekologická řada.</p>
           </details>
           <div class="card-foot">
@@ -576,7 +585,7 @@
           </div>
           <p class="lead">Moderní a bezpečná linie, která chrání pokožku před stresujícím životem ve městě.</p>
           <details>
-            <summary>Celý popis ošetření <span aria-hidden="true">›</span></summary>
+            <summary>Celý popis péče <span aria-hidden="true">›</span></summary>
             <p class="rest">Okysličuje a zlepšuje barevný tón pleti. Hlavní aktivní přísady jako výtažek z čerstvého mechu a houby Chaga představují nenahraditelnou sílu lesa.</p>
           </details>
           <div class="card-foot">
@@ -615,7 +624,7 @@
           </div>
           <p class="lead">Intenzivní zpevňující, rozjasňující a antioxidační péče.</p>
           <details>
-            <summary>Celý popis ošetření <span aria-hidden="true">›</span></summary>
+            <summary>Celý popis péče <span aria-hidden="true">›</span></summary>
             <p class="rest">Obnovuje a chrání buňky proti předčasnému stárnutí. Viditelně vyhlazuje vrásky a redukuje příznaky povolené pleti.</p>
           </details>
           <div class="card-foot">
@@ -631,7 +640,7 @@
           </div>
           <p class="lead">Profesionální řada, která stimuluje syntézu kolagenu a elastinu, a tím redukuje vrásky, zpevňuje kontury a omlazuje pleť.</p>
           <details>
-            <summary>Celý popis ošetření <span aria-hidden="true">›</span></summary>
+            <summary>Celý popis péče <span aria-hidden="true">›</span></summary>
             <p class="rest">Díky účinným látkám je pleť viditelně rozjasněná, omlazená, zpevněná a vyhlazená.</p>
           </details>
           <div class="card-foot">
@@ -647,7 +656,7 @@
           </div>
           <p class="lead">Profesionální péče s pre- a probiotiky zklidní podrážděnou a zarudlou pleť.</p>
           <details>
-            <summary>Celý popis ošetření <span aria-hidden="true">›</span></summary>
+            <summary>Celý popis péče <span aria-hidden="true">›</span></summary>
             <p class="rest">Pomáhá regulovat a harmonizovat, posiluje přirozenou bariéru, zabraňuje předčasnému stárnutí, revitalizuje, hydratuje a zklidňuje.</p>
           </details>
           <div class="card-foot">
@@ -663,7 +672,7 @@
           </div>
           <p class="lead">Profesionální bělící péče pro pleť s hyperpigmentací, unavenou a bez jasu.</p>
           <details>
-            <summary>Celý popis ošetření <span aria-hidden="true">›</span></summary>
+            <summary>Celý popis péče <span aria-hidden="true">›</span></summary>
             <p class="rest">Exfoliační účinky AHA kyselin a různé formy vitamínu C. Maximální a bezpečná intenzita vitamínu C zaručuje okamžité výsledky — pleť je sjednocená a rozjasněná.</p>
           </details>
           <div class="card-foot">
@@ -679,7 +688,7 @@
           </div>
           <p class="lead">Profesionální peeling s obsahem kyseliny glykolové a vitamínu C.</p>
           <details>
-            <summary>Celý popis ošetření <span aria-hidden="true">›</span></summary>
+            <summary>Celý popis péče <span aria-hidden="true">›</span></summary>
             <p class="rest">Eliminuje odumřelé buňky z epidermis a aktivuje buněčnou obnovu pleti. Rozjasňuje a sjednocuje tón pleti.</p>
           </details>
           <div class="card-foot">
@@ -697,9 +706,9 @@
 <section class="process">
   <div class="process-inner">
     <div class="process-copy">
-      <span class="eyebrow">Jak ošetření probíhá</span>
+      <span class="eyebrow">Jak péče probíhá</span>
       <h2>Kompletní rituál péče o pleť</h2>
-      <p>Každé ošetření je celostní prožitek — od pečlivého čištění až po relaxační masáž hlavy a dekoltu. Odcházíte s odpočatou a rozzářenou pletí.</p>
+      <p>Kosmetická péče je u nás celostní prožitek — od pečlivého čištění až po relaxační masáž hlavy a dekoltu. Odcházíte s odpočatou a rozzářenou pletí.</p>
       <a class="btn btn-accent btn-process" href="tel:+420775502224" aria-label="Rezervovat termín telefonicky na +420 775 502 224"><span aria-hidden="true">✆</span> Rezervovat termín</a>
     </div>
     <ol class="steps">
@@ -733,7 +742,7 @@
       <div class="product-body">
         <h3>PHYRIS FoREST</h3>
         <p>Sérum <strong>FoREST Elixir</strong> a lehký krém <strong>FoREST Light Cream</strong> pro pleť unavenou městem — chrání ji před stresem městského prostředí a zlepšují barevný tón. Se silou lesa: výtažek z mechu a houba Chaga.</p>
-        <p class="product-rel">Navazuje na ošetření <a href="#osetreni">Procházka lesem – Forest</a></p>
+        <p class="product-rel">Navazuje na péči <a href="#kosmeticka-pece">Procházka lesem – Forest</a></p>
       </div>
     </article>
 
@@ -744,7 +753,7 @@
       <div class="product-body">
         <h3>PHYRIS See Change</h3>
         <p>Na obličej <strong>kolagenový krém</strong> a <strong>sérum v kapslích</strong>, na tělo zpevňující <strong>See Change Body</strong>. Řada s mořskými řasami a minerály intenzivně hydratuje a podporuje regeneraci pokožky.</p>
-        <p class="product-rel">Navazuje na ošetření <a href="#osetreni">Hloubková regenerace – See Change</a></p>
+        <p class="product-rel">Navazuje na péči <a href="#kosmeticka-pece">Hloubková regenerace – See Change</a></p>
       </div>
     </article>
 
@@ -797,7 +806,7 @@
         <span class="label">Barvení řas</span>
         <span class="val"><span class="amount">250 Kč</span><span class="note">při kosmetice 100 Kč</span></span>
       </div>
-      <p class="fineprint">Ceny zvýhodněné při současném objednání kosmetického ošetření.</p>
+      <p class="fineprint">Ceny zvýhodněné při současném objednání kosmetické péče.</p>
     </div>
     <div>
       <h3>Depilace samostržným voskem</h3>
@@ -824,7 +833,7 @@
     <div class="contact-copy">
       <span class="eyebrow">Objednání</span>
       <h2>Zavolejte a domluvíme termín přímo pro vás</h2>
-      <p>Ráda vám poradím s výběrem ošetření podle typu vaší pleti. Zavolejte mi, nebo napište na WhatsApp — najdeme čas, který vám vyhovuje.</p>
+      <p>Ráda vám poradím s výběrem péče podle typu vaší pleti. Zavolejte mi, nebo napište na WhatsApp — najdeme čas, který vám vyhovuje.</p>
       <div class="contact-actions">
         <a class="btn btn-phone" href="tel:+420775502224" aria-label="Zavolat na +420 775 502 224">
           <span aria-hidden="true" style="font-size: 22px;">✆</span> +420 775 502 224
