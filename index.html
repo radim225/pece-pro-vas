@@ -3,11 +3,63 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Péče PRO VÁS · Kosmetika Praha 8 – Karlín</title>
-<meta name="description" content="Kosmetický salon Péče PRO VÁS v Praze 8 – Karlíně. Profesionální kosmetická péče o pleť značkami Phyris a Bruno Vassari, úprava obočí a řas, depilace. Objednávky telefonicky.">
+<title>Kosmetika Karlín | Péče PRO VÁS – salon Praha 8</title>
+<meta name="description" content="Kosmetický salon Péče PRO VÁS v Karlíně, Praha 8. Prémiová kosmetika Phyris a Bruno Vassari, péče o pleť, úprava obočí a řas, depilace. Objednání telefonicky.">
+<link rel="canonical" href="https://www.peceprovas.cz/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:site_name" content="Péče PRO VÁS">
+<meta property="og:url" content="https://www.peceprovas.cz/">
+<meta property="og:title" content="Kosmetika Karlín | Péče PRO VÁS – salon Praha 8">
+<meta property="og:description" content="Kosmetický salon Péče PRO VÁS v Karlíně, Praha 8. Prémiová kosmetika Phyris a Bruno Vassari, péče o pleť, úprava obočí a řas, depilace. Objednání telefonicky.">
+<meta property="og:image" content="https://www.peceprovas.cz/og.jpg">
+<meta property="og:image:secure_url" content="https://www.peceprovas.cz/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Péče PRO VÁS — kosmetický salon v Karlíně, Praha 8. Vpravo kosmetika Phyris See Change.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kosmetika Karlín | Péče PRO VÁS – salon Praha 8">
+<meta name="twitter:description" content="Kosmetický salon Péče PRO VÁS v Karlíně, Praha 8. Prémiová kosmetika Phyris a Bruno Vassari, péče o pleť, úprava obočí a řas, depilace. Objednání telefonicky.">
+<meta name="twitter:image" content="https://www.peceprovas.cz/og.jpg">
+<meta name="twitter:image:alt" content="Péče PRO VÁS — kosmetický salon v Karlíně, Praha 8. Vpravo kosmetika Phyris See Change.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#F4EBE0">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "@id": "https://www.peceprovas.cz/#salon",
+  "name": "Péče PRO VÁS",
+  "url": "https://www.peceprovas.cz/",
+  "image": "https://www.peceprovas.cz/og.jpg",
+  "telephone": "+420775502224",
+  "email": "peceprovas@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Thámova 191/21",
+    "addressLocality": "Praha 8 – Karlín",
+    "addressCountry": "CZ"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.093635,
+    "longitude": 14.451465
+  },
+  "sameAs": "https://maps.app.goo.gl/9VuxbkKFMu3voxbM8",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "IČO",
+    "value": "01289306"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" type="image/webp" href="Fotky/main-800.webp" imagesrcset="Fotky/main-800.webp 800w, Fotky/main-1600.webp 1600w" imagesizes="(max-width: 900px) calc(100vw - 32px), 560px">
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -20,8 +72,9 @@
     --body: #635648;
     --muted: #6E6157;
     --muted-2: #5F5349;
-    --accent: #A9694F;
-    --accent-dark: #96593F;
+    /* Terakota ztmavená na AA 4.5:1: tlačítka #96593F, drobný text #8F543B. */
+    --accent: #96593F;
+    --accent-dark: #8F543B;
     --accent-light: #E0B491;
     --line: #E4D7C7;
     --line-card: #EADBCA;
@@ -35,6 +88,7 @@
   a { color: var(--accent); text-decoration: none; }
   a:hover { color: var(--accent-dark); }
   img { display: block; max-width: 100%; }
+  picture { display: block; }
   h1, h2, h3, h4 { font-family: 'Barlow', sans-serif; }
   a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
   summary { list-style: none; }
@@ -98,7 +152,7 @@
     border-radius: 100px; font-weight: 700; white-space: nowrap;
     transition: background .2s ease, transform .2s ease, box-shadow .2s ease, color .2s ease;
   }
-  .btn-accent { background: var(--accent); color: var(--bg-card); box-shadow: 0 6px 16px rgba(169,105,79,0.28); }
+  .btn-accent { background: var(--accent); color: var(--bg-card); box-shadow: 0 6px 16px rgba(150,89,63,0.28); }
   .btn-accent:hover { background: var(--accent-dark); color: var(--bg-card); }
   .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--line-strong); }
   .btn-outline:hover { background: var(--bg-section); color: var(--ink); }
@@ -116,11 +170,11 @@
   .nav-wa:hover { background: #25D366; color: #fff; }
   .nav-wa .ico-wa { width: 21px; height: 21px; }
   .btn-call-mobile { gap: 8px; min-height: 46px; padding: 0 18px; font-size: 14.5px; font-weight: 800; box-shadow: none; }
-  .btn-hero { gap: 10px; min-height: 56px; padding: 0 28px; font-size: 16.5px; box-shadow: 0 10px 26px rgba(169,105,79,0.32); }
+  .btn-hero { gap: 10px; min-height: 56px; padding: 0 28px; font-size: 16.5px; box-shadow: 0 10px 26px rgba(150,89,63,0.32); }
   .btn-hero:hover { transform: translateY(-2px); }
   .btn-hero-ghost { gap: 8px; min-height: 56px; padding: 0 26px; font-size: 16.5px; }
   .btn-book { gap: 7px; min-height: 44px; padding: 0 18px; font-size: 13.5px; }
-  .btn-process { gap: 9px; min-height: 52px; padding: 0 24px; font-size: 15.5px; box-shadow: 0 10px 24px rgba(169,105,79,0.28); }
+  .btn-process { gap: 9px; min-height: 52px; padding: 0 24px; font-size: 15.5px; box-shadow: 0 10px 24px rgba(150,89,63,0.28); }
 
   /* ===== Hero ===== */
   .hero {
@@ -142,6 +196,10 @@
     margin: 20px 0 0; letter-spacing: -1.2px; text-wrap: balance;
   }
   .hero-copy h1 em { font-style: italic; color: var(--accent); }
+  .hero-copy h1 .h1-where {
+    display: block; margin-top: 12px; font-size: 0.42em; font-weight: 600;
+    letter-spacing: 0.01em; line-height: 1.2; color: var(--accent);
+  }
   .hero-copy .lede {
     font-size: clamp(16px, 1.4vw, 19px); line-height: 1.65; color: var(--body);
     max-width: 500px; margin: 22px 0 0; text-wrap: pretty;
@@ -149,7 +207,7 @@
   .hero-copy .lede strong { color: var(--ink); font-weight: 700; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
   .hero-note { margin-top: 22px; font-size: 14.5px; color: var(--muted); }
-  .hero-note a { font-weight: 700; border-bottom: 1px solid rgba(169,105,79,0.4); }
+  .hero-note a { font-weight: 700; border-bottom: 1px solid rgba(150,89,63,0.4); }
 
   .hero-media {
     flex: 0 1 460px; min-width: 0; width: 100%; max-width: 560px; margin: 0 auto;
@@ -161,6 +219,7 @@
     position: relative; width: 100%; aspect-ratio: 4/3;
     border-radius: 26px; box-shadow: 0 30px 60px rgba(120,85,60,0.22);
   }
+  .hero-photo picture { position: absolute; inset: 0; }
   .hero-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; }
   /* Bottom-right: on main.JPG the left corner sits over the honeycomb detail
      that distinguishes the "before" half, the right corner only over hair. */
@@ -211,7 +270,7 @@
   .tab:hover { background: #F4E7DB; }
   .tab[aria-pressed="true"] {
     background: var(--accent); color: var(--bg-card); border-color: var(--accent);
-    box-shadow: 0 8px 20px rgba(169,105,79,0.28);
+    box-shadow: 0 8px 20px rgba(150,89,63,0.28);
   }
 
   /* ===== Treatments ===== */
@@ -275,6 +334,7 @@
     border: 1px solid var(--line-card); background: var(--bg-soft);
   }
   .products-photo { position: relative; }
+  .products-photo picture { position: absolute; inset: 0; }
   .products-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
   @media (max-width: 860px) {
     .products-head { grid-template-columns: 1fr; }
@@ -295,7 +355,8 @@
   /* The Phyris and SPF shots are natively 3:4 (900×1200 and 600×800), so cover
      crops nothing — the SPF banner's baked-in text stays whole. The LAB Biotics
      banner is 1062×1527, so it gets its own ratio for the same reason. */
-  .product-shot { width: 100%; aspect-ratio: 3/4; background: var(--bg-soft); }
+  .product-shot { position: relative; width: 100%; aspect-ratio: 3/4; background: var(--bg-soft); }
+  .product-shot picture { position: absolute; inset: 0; }
   .product-shot-tall { aspect-ratio: 1062 / 1527; }
   .product-shot img { width: 100%; height: 100%; object-fit: cover; }
   .product-body { padding: clamp(18px, 2.4vw, 24px); display: flex; flex-direction: column; flex: 1; }
@@ -308,7 +369,7 @@
   .product-rel {
     margin-top: auto; padding-top: 16px; font-size: 13px; color: var(--muted);
   }
-  .product-rel a { font-weight: 700; border-bottom: 1px solid rgba(169,105,79,0.35); }
+  .product-rel a { font-weight: 700; border-bottom: 1px solid rgba(150,89,63,0.35); }
   /* Bannery Bruno Vassari mají natištěné neklikatelné tlačítko „OBJEVTE SPF 40".
      Tenhle odkaz je jeho pravdivý protějšek — vypadá jako akce a akcí je. */
   .product-ask {
@@ -441,8 +502,44 @@
   .footer-legal {
     max-width: 1080px; margin: 16px auto 0; padding-top: 16px;
     border-top: 1px solid rgba(179,164,147,0.2);
-    font-size: 12px; color: #8A7E70;
+    font-size: 12px; color: #9C8E80;
   }
+
+  /* Recenze — sekce je v HTML skrytá, dokud skript nedostane položky v RECENZE. */
+  .reviews[hidden] { display: none !important; }
+  .review-summary {
+    display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+    gap: 10px 14px; margin-top: 22px;
+  }
+  .g-mark { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; color: var(--ink); font-size: 16px; }
+  .g-mark svg { width: 20px; height: 20px; display: block; }
+  .review-score { font-family: 'Barlow', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.4px; line-height: 1; }
+  .review-count { font-size: 14.5px; font-weight: 700; color: var(--muted-2); }
+  .stars { display: inline-flex; gap: 2px; line-height: 1; }
+  .stars .star { color: #D9CBBC; font-size: 18px; }
+  .stars .star.on { color: #A07820; }
+  .review-cards {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;
+    max-width: 1080px; margin: 28px auto 0;
+  }
+  .review-card {
+    flex: 1 1 300px; max-width: 520px;
+    display: flex; gap: 14px; text-align: left;
+    background: var(--bg-card); border: 1px solid var(--line-card); border-radius: 20px;
+    padding: 20px 22px;
+  }
+  .review-avatar {
+    flex: 0 0 44px; width: 44px; height: 44px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--accent); color: var(--bg-card);
+    font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 18px;
+  }
+  .review-body { min-width: 0; }
+  .review-name { font-weight: 800; font-size: 16px; color: var(--ink); }
+  .review-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-top: 4px; }
+  .review-date { font-size: 13px; color: var(--muted); }
+  .review-text { margin: 10px 0 0; font-size: 15px; line-height: 1.6; color: var(--body); text-wrap: pretty; }
+  .reviews-more { text-align: center; margin: 28px 0 0; }
 
   /* ===== WhatsApp ===== */
   .ico-wa { width: 1.15em; height: 1.15em; flex-shrink: 0; }
@@ -555,7 +652,7 @@
 <section class="hero" id="top">
   <div class="hero-copy">
     <span class="eyebrow-pill">Kosmetický salon · Praha 8 – Karlín</span>
-    <h1>Péči o&nbsp;<em>Vás</em><br>nechte na&nbsp;nás</h1>
+    <h1>Péči o&nbsp;<em>Vás</em><br>nechte na&nbsp;nás<span class="h1-where">v&nbsp;Karlíně</span></h1>
     <p class="lede">Kosmetické služby šité přímo na míru vaší pleti. Profesionální péče značkami <strong>Phyris</strong> a <strong>Bruno Vassari</strong> v útulném prostředí karlínského salonu.</p>
     <div class="hero-actions">
       <a class="btn btn-outline btn-hero-ghost" href="#kosmeticka-pece">Prohlédnout nabídku péče</a>
@@ -565,7 +662,10 @@
 
   <div class="hero-media">
     <div class="hero-photo">
-      <img src="Fotky/main.JPG" alt="Detail pleti — srovnání stavu před návštěvou salonu a po ní" loading="eager" fetchpriority="high">
+      <picture>
+        <source type="image/webp" srcset="Fotky/main-800.webp 800w, Fotky/main-1600.webp 1600w" sizes="(max-width: 900px) calc(100vw - 32px), 560px">
+        <img src="Fotky/main.JPG" alt="Detail pleti — vlevo stav před návštěvou salonu, vpravo po ní" width="2048" height="1530" fetchpriority="high" decoding="async">
+      </picture>
       <div class="hero-badge">
         <div class="big">na míru</div>
         <div class="small">každé pleti</div>
@@ -597,7 +697,7 @@
 <section class="section" id="kosmeticka-pece">
   <div class="section-head">
     <span class="eyebrow">Kosmetická péče</span>
-    <h2>Kosmetická péče na míru vaší pleti</h2>
+    <h2>Kosmetická péče na míru vaší pleti v&nbsp;Karlíně</h2>
     <p>Vyberte značku a najděte kosmetickou péči, která odpovídá potřebám vaší pleti. Každá procedura je kompletní — od čištění po závěrečnou masáž.</p>
   </div>
 
@@ -817,7 +917,10 @@
       <p>Kosmetická péče v salonu je jen začátek — o výsledek se stará to, co pro pleť děláte doma mezi návštěvami. Poradím vám, co vaší pleti opravdu sedí, a kosmetiku Phyris i Bruno Vassari si můžete odnést rovnou ze salonu.</p>
     </div>
     <figure class="products-photo">
-      <img src="Fotky/bruno_katalog.JPEG" alt="Katalog kosmetiky Bruno Vassari" loading="lazy">
+      <picture>
+        <source type="image/webp" srcset="Fotky/bruno-katalog-640.webp 640w, Fotky/bruno-katalog-942.webp 942w" sizes="(max-width: 860px) 100vw, 420px">
+        <img src="Fotky/bruno_katalog.JPEG" alt="Otevřený katalog kosmetiky Bruno Vassari" width="942" height="1672" loading="lazy" decoding="async">
+      </picture>
     </figure>
   </div>
 
@@ -825,7 +928,10 @@
     <div class="products" role="group" aria-label="Produkty ze salonu">
     <article class="product-card">
       <div class="product-shot">
-        <img src="Fotky/phyris-forest.jpg" alt="PHYRIS FoREST — sérum Elixir a lehký krém Light Cream" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="Fotky/phyris-forest-480.webp 480w, Fotky/phyris-forest-900.webp 900w" sizes="(max-width: 700px) 80vw, 320px">
+          <img src="Fotky/phyris-forest.jpg" alt="Lahvičky PHYRIS FoREST — sérum Elixir a lehký krém Light Cream" width="900" height="1200" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="product-body">
         <span class="product-brand">Phyris</span>
@@ -837,7 +943,10 @@
 
     <article class="product-card">
       <div class="product-shot">
-        <img src="Fotky/phyris-see-change.jpg" alt="PHYRIS SEE CHANGE — kolagenový krém, sérum v kapslích a tělová péče" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="Fotky/phyris-see-change-480.webp 480w, Fotky/phyris-see-change-900.webp 900w" sizes="(max-width: 700px) 80vw, 320px">
+          <img src="Fotky/phyris-see-change.jpg" alt="PHYRIS SEE CHANGE — kolagenový krém, sérum v kapslích a tělová péče" width="900" height="1200" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="product-body">
         <span class="product-brand">Phyris</span>
@@ -849,7 +958,10 @@
 
     <article class="product-card">
       <div class="product-shot">
-        <img src="Fotky/product.JPG" alt="Bruno Vassari City &amp; Beach SPF 40 — krém s vysokou ochranou pro každodenní použití" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="Fotky/product-400.webp 400w, Fotky/product-600.webp 600w" sizes="(max-width: 700px) 80vw, 320px">
+          <img src="Fotky/product.JPG" alt="Bruno Vassari City &amp; Beach SPF 40 — krém s vysokou ochranou pro každodenní použití" width="600" height="800" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="product-body">
         <span class="product-brand">Bruno Vassari</span>
@@ -861,7 +973,10 @@
 
     <article class="product-card">
       <div class="product-shot product-shot-tall">
-        <img src="Fotky/tonikum_bruno.JPEG" alt="Bruno Vassari LAB Biotics Daily Mist Toner — tonizační mlha ve spreji" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="Fotky/tonikum-bruno-560.webp 560w, Fotky/tonikum-bruno-1062.webp 1062w" sizes="(max-width: 700px) 80vw, 320px">
+          <img src="Fotky/tonikum_bruno.JPEG" alt="Bruno Vassari LAB Biotics Daily Mist Toner — tonizační mlha ve spreji" width="1062" height="1527" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="product-body">
         <span class="product-brand">Bruno Vassari</span>
@@ -921,6 +1036,25 @@
   </div>
 </section>
 
+<!--
+  Recenze z Google profilu https://maps.app.goo.gl/9VuxbkKFMu3voxbM8
+  12. 10. 2026 šel na veřejné stránce Map přečíst souhrn 5,0 a tlačítko
+  „Napsat recenzi“. Text recenze, jméno a datum se bez přihlášení nenačetly
+  (omezený režim Map). Dokud je pole RECENZE prázdné, sekce zůstane skrytá.
+  Až bude text doslova, přidejte objekt do pole ve skriptu na konci stránky.
+-->
+<section class="section reviews" id="recenze" hidden>
+  <div class="section-head">
+    <span class="eyebrow">Recenze</span>
+    <h2>Co říkají recenze</h2>
+  </div>
+  <div class="review-summary" data-summary></div>
+  <div class="review-cards" data-cards></div>
+  <p class="reviews-more">
+    <a class="btn btn-outline btn-process" href="https://maps.app.goo.gl/9VuxbkKFMu3voxbM8" target="_blank" rel="noopener">Přečíst / napsat recenzi na Google</a>
+  </p>
+</section>
+
 <!-- ===== CONTACT / BOOKING ===== -->
 <section class="contact" id="kontakt">
   <div class="contact-inner">
@@ -943,6 +1077,7 @@
         <div class="k">Adresa</div>
         <div class="v">Thámova 191/21<br>Praha 8 – Karlín</div>
         <a class="maplink" href="https://www.google.com/maps/place/P%C3%A9%C4%8De+pro+V%C3%A1s/@50.0936384,14.4488901,17z/data=!3m1!4b1!4m6!3m5!1s0x470b94a488cd46d7:0xce386c428b9d5861!8m2!3d50.093635!4d14.451465!16s%2Fg%2F11hc_ft3yh" target="_blank" rel="noopener">Zobrazit na mapě <span aria-hidden="true">↗</span></a>
+        <a class="maplink" href="https://maps.app.goo.gl/9VuxbkKFMu3voxbM8" target="_blank" rel="noopener">Přečíst / napsat recenzi na Google <span aria-hidden="true">↗</span></a>
       </div>
       <div class="contact-card">
         <div class="k">E-mail</div>
@@ -1060,6 +1195,87 @@
     rail.addEventListener('scroll', mark, { passive: true });
     window.addEventListener('resize', build);
     build();
+  })();
+</script>
+
+<script>
+  /* Recenze. Prázdné pole = sekce #recenze zůstane skrytá.
+     Doplňte jen text přečtený doslova z Google profilu, nic nevymýšlejte.
+     Příklad položky (nechat zakomentované, dokud text není ověřený):
+     { name: "Jana", stars: 5, date: "březen 2026", text: "Doslovný text recenze." }
+     Další karty = další objekty ve stejném poli. */
+  var RECENZE = [];
+
+  (function () {
+    var root = document.getElementById('recenze');
+    if (!root) return;
+    var polozky = RECENZE.filter(function (r) {
+      return r && typeof r.name === 'string' && r.name.trim() &&
+        typeof r.text === 'string' && r.text.trim() &&
+        typeof r.stars === 'number' && r.stars >= 1 && r.stars <= 5;
+    });
+    if (!polozky.length) return;
+
+    var summary = root.querySelector('[data-summary]');
+    var cards = root.querySelector('[data-cards]');
+    var soucet = 0;
+    polozky.forEach(function (r) { soucet += r.stars; });
+    var prumer = (soucet / polozky.length).toFixed(1).replace('.', ',');
+    var n = polozky.length;
+    var mod10 = n % 10;
+    var mod100 = n % 100;
+    var pocet = (n === 1) ? '1 recenze'
+      : (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) ? (n + ' recenze')
+      : (n + ' recenzí');
+
+    summary.appendChild(googleZnacka());
+    summary.appendChild(el('span', 'review-score', prumer));
+    summary.appendChild(hvezdicky(Math.round(soucet / polozky.length)));
+    summary.appendChild(el('span', 'review-count', pocet));
+
+    polozky.forEach(function (r, i) {
+      var card = el('article', 'review-card');
+      var avatar = el('div', 'review-avatar', r.name.trim().charAt(0).toLocaleUpperCase('cs'));
+      avatar.setAttribute('aria-hidden', 'true');
+      var body = el('div', 'review-body');
+      body.appendChild(el('div', 'review-name', r.name.trim()));
+      var meta = el('div', 'review-meta');
+      meta.appendChild(hvezdicky(r.stars));
+      if (typeof r.date === 'string' && r.date.trim()) meta.appendChild(el('span', 'review-date', r.date.trim()));
+      body.appendChild(meta);
+      body.appendChild(el('p', 'review-text', r.text.trim()));
+      card.appendChild(avatar);
+      card.appendChild(body);
+      cards.appendChild(card);
+    });
+
+    root.hidden = false;
+
+    function el(tag, cls, text) {
+      var node = document.createElement(tag);
+      if (cls) node.className = cls;
+      if (text != null) node.textContent = text;
+      return node;
+    }
+
+    function hvezdicky(n) {
+      var wrap = el('span', 'stars');
+      wrap.setAttribute('role', 'img');
+      wrap.setAttribute('aria-label', n + ' z 5 hvězdiček');
+      for (var i = 1; i <= 5; i++) {
+        var s = el('span', 'star' + (i <= n ? ' on' : ''), '★');
+        s.setAttribute('aria-hidden', 'true');
+        wrap.appendChild(s);
+      }
+      return wrap;
+    }
+
+    function googleZnacka() {
+      var wrap = el('span', 'g-mark');
+      wrap.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1C3.4 21.3 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.4 14.4c-.2-.7-.4-1.4-.4-2.4s.1-1.7.4-2.4V6.5H1.4C.5 8.3 0 10.1 0 12s.5 3.7 1.4 5.5l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.7 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.1 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.5l4 3.1C6.3 6.8 8.9 4.8 12 4.8z"/></svg>';
+      wrap.appendChild(el('span', null, 'Google'));
+      return wrap;
+    }
   })();
 </script>
 
