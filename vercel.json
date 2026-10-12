@@ -1,6 +1,17 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "kosmetikamamka.vercel.app"
+        }
+      ],
+      "destination": "https://www.peceprovas.cz/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
