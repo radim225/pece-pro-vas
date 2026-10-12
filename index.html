@@ -60,7 +60,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" type="image/webp" href="Fotky/main-800.webp" imagesrcset="Fotky/main-800.webp 800w, Fotky/main-1600.webp 1600w" imagesizes="(max-width: 900px) calc(100vw - 32px), 560px">
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F4EBE0;
@@ -89,7 +89,9 @@
   a:hover { color: var(--accent-dark); }
   img { display: block; max-width: 100%; }
   picture { display: block; }
-  h1, h2, h3, h4 { font-family: 'Barlow', sans-serif; }
+  /* Náhled: velké nadpisy a ceny ve Fraunces, zbytek stránky zůstává u Barlow/Mulish. */
+  h1, h2 { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+  h3, h4 { font-family: 'Barlow', sans-serif; }
   a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
   summary { list-style: none; }
   summary::-webkit-details-marker { display: none; }
@@ -192,8 +194,8 @@
      velikosti výrazně víc plochy. Nadpisy proto jdou dolů zhruba o čtvrtinu,
      váha nahoru a prostrkání do minusu, jinak by stránku přeřvaly. */
   .hero-copy h1 {
-    font-weight: 600; font-size: clamp(34px, 5.2vw, 64px); line-height: 1.06;
-    margin: 20px 0 0; letter-spacing: -1.2px; text-wrap: balance;
+    font-weight: 500; font-size: clamp(40px, 5.8vw, 72px); line-height: 1.02;
+    margin: 20px 0 0; letter-spacing: -0.02em; text-wrap: balance;
   }
   .hero-copy h1 em { font-style: italic; color: var(--accent); }
   .hero-copy h1 .h1-where {
@@ -248,8 +250,8 @@
   .eyebrow { font-size: 12px; letter-spacing: 2.6px; text-transform: uppercase; color: var(--accent-dark); font-weight: 700; }
   .section-head { text-align: center; max-width: 640px; margin: 0 auto; }
   .section-head h2 {
-    font-weight: 600; font-size: clamp(28px, 3.8vw, 46px); margin: 14px 0 12px;
-    letter-spacing: -0.8px; line-height: 1.12; text-wrap: balance;
+    font-weight: 500; font-size: clamp(32px, 4.2vw, 52px); margin: 14px 0 12px;
+    letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance;
   }
   .section-head p { font-size: 16px; line-height: 1.65; color: var(--body); margin: 0; text-wrap: pretty; }
 
@@ -302,13 +304,13 @@
     display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between;
     gap: 12px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line-inner);
   }
-  .price { font-family: 'Barlow', sans-serif; font-size: 25px; font-weight: 700; letter-spacing: -0.4px; color: var(--ink); }
+  .price { font-family: 'Fraunces', Georgia, serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
 
   /* ===== Process ===== */
   .process { background: var(--bg-section); padding: clamp(48px, 7vw, 92px) clamp(16px, 4vw, 64px); }
   .process-inner { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 70px); align-items: center; }
   .process-copy { flex: 1 1 330px; min-width: 0; }
-  .process-copy h2 { font-weight: 600; font-size: clamp(27px, 3.5vw, 42px); margin: 14px 0 16px; letter-spacing: -0.8px; line-height: 1.12; text-wrap: balance; }
+  .process-copy h2 { font-weight: 500; font-size: clamp(32px, 4vw, 48px); margin: 14px 0 16px; letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance; }
   .process-copy p { font-size: 16px; line-height: 1.65; color: #5E5245; margin: 0 0 22px; text-wrap: pretty; }
   .steps { flex: 1 1 380px; min-width: 0; display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
   .steps li {
@@ -451,8 +453,8 @@
   .contact-copy { flex: 1 1 360px; min-width: 0; }
   .contact .eyebrow { color: var(--accent-light); }
   .contact-copy h2 {
-    font-weight: 600; font-size: clamp(28px, 4vw, 50px); margin: 14px 0 18px;
-    line-height: 1.1; letter-spacing: -0.9px; text-wrap: balance;
+    font-weight: 500; font-size: clamp(32px, 4.4vw, 56px); margin: 14px 0 18px;
+    line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance;
   }
   .contact-copy p { font-size: 16.5px; line-height: 1.65; color: #DCCEBF; max-width: 480px; margin: 0 0 28px; text-wrap: pretty; }
   .btn-phone {
@@ -998,7 +1000,7 @@
 <section class="section" id="doplnky">
   <div class="section-head" style="max-width: 620px; margin-bottom: 40px;">
     <span class="eyebrow">Doplňkové služby</span>
-    <h2 style="font-size: clamp(30px, 4.4vw, 54px); margin-bottom: 0;">Malé detaily, velký rozdíl</h2>
+    <h2 style="font-size: clamp(34px, 4.8vw, 58px); margin-bottom: 0;">Malé detaily, velký rozdíl</h2>
   </div>
   <div class="extras">
     <div>
