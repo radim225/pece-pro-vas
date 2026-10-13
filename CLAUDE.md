@@ -32,7 +32,7 @@ Kontrola před commitem: `grep -i "ošetř" index.html` musí být prázdné.
 - **Přípony `.JPG`/`.JPEG` velkými písmeny** (`main.JPG`, `product.JPG`, `bruno_katalog.JPEG`, `tonikum_bruno.JPEG`). Vercel běží na case-sensitive filesystemu — `main.jpg` vrátí 404. Nepřejmenovávej bez úpravy `index.html`.
 - **Push velkých binárek přes HTTP padá** na `send-pack: unexpected disconnect`. Prochází s `git -c http.postBuffer=524288000 push origin main`. **Vždy ověř, že push dosedl:** `git rev-list --left-right --count origin/main...HEAD` musí dát `0 0` (git umí zavádějícně hlásit „Everything up-to-date").
 - **Rám fotky se přizpůsobuje fotce, ne naopak.** Poměry stran v CSS odpovídají nativním rozměrům, aby `object-fit: cover` neuřízl vysázený text na bannerech ani polovinu srovnávacího snímku před/po.
-- **Vercel Web Analytics** měří jen díky ručně vloženému `<script defer src="/_vercel/insights/script.js">` před `</body>`. U statického HTML se nevloží sám — nemazat, jinak měření tiše umře.
+- **Vercel Web Analytics** se na statickém HTML nevloží sám. Inline skript před `</body>` ho vloží (`/_vercel/insights/script.js`) jen když v `localStorage` není příznak `peceprovas-nesledovat`. `?nesledovat` příznak uloží dřív, než odejde pageview (`beforeSend` vrací `null` a skript se nenačte); `?sledovat` ho smaže. Když `localStorage` nejde použít, stránka musí dál fungovat. Inline skript nemazat a nevracet nepodmíněný `<script src>`, jinak se opt-out obejde a měření tiše umře.
 
 ## Jak ověřovat změny
 
