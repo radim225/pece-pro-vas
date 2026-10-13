@@ -1281,11 +1281,59 @@
   })();
 </script>
 
-<!-- Vercel Web Analytics — počítá návštěvy a zobrazení stránky.
-     Skript servíruje sám Vercel z /_vercel/insights/script.js; funguje jen
-     když je Web Analytics zapnuté v nastavení projektu (jinak vrací 404).
-     Bez toho jsou statistiky ve Vercelu prázdné. -->
-<script defer src="/_vercel/insights/script.js"></script>
+<!-- Vercel Web Analytics. Skript /_vercel/insights/script.js servíruje Vercel,
+     jen když je Web Analytics v projektu zapnuté. ?nesledovat uloží příznak
+     do localStorage dřív, než se skript vloží; beforeSend vrátí null, takže
+     se neodešle ani tato návštěva. ?sledovat příznak smaže. -->
+<script>
+  (function () {
+    var KEY = 'peceprovas-nesledovat';
+    var optedOut = false;
+
+    function storageGet() {
+      try { return localStorage.getItem(KEY); }
+      catch (e) { return null; }
+    }
+    function storageSet(value) {
+      try { localStorage.setItem(KEY, value); }
+      catch (e) {}
+    }
+    function storageRemove() {
+      try { localStorage.removeItem(KEY); }
+      catch (e) {}
+    }
+
+    try {
+      var params = new URLSearchParams(window.location.search);
+      if (params.has('nesledovat')) {
+        storageSet('1');
+        optedOut = true;
+      } else if (params.has('sledovat')) {
+        storageRemove();
+        optedOut = storageGet() === '1';
+      } else {
+        optedOut = storageGet() === '1';
+      }
+    } catch (e) {
+      optedOut = storageGet() === '1';
+    }
+
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+    window.va('beforeSend', function (event) {
+      if (optedOut || storageGet() === '1') return null;
+      return event;
+    });
+
+    if (optedOut) return;
+
+    var script = document.createElement('script');
+    script.defer = true;
+    script.src = '/_vercel/insights/script.js';
+    document.body.appendChild(script);
+  })();
+</script>
 
 </body>
 </html>
