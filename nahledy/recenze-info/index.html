@@ -78,7 +78,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" type="image/webp" href="../../Fotky/main-800.webp" imagesrcset="../../Fotky/main-800.webp 800w, ../../Fotky/main-1600.webp 1600w" imagesizes="(max-width: 900px) calc(100vw - 32px), 560px">
+<link rel="preload" as="image" type="image/webp" href="../../Fotky/main-800.webp" imagesrcset="../../Fotky/main-800.webp 800w, ../../Fotky/main-1600.webp 1600w" imagesizes="(max-width: 900px) calc(100vw - 32px), 520px">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -657,6 +657,30 @@
   .brandmark .name, .footer-inner .name { font-size: clamp(22px, 4.4vw, 26px); font-weight: 700; letter-spacing: 0; }
   .price { font-size: 32px; font-weight: 700; }
   .eyebrow { letter-spacing: 3.2px; }
+
+  /* ===== Společný kontejner od 768 px =====
+     1200 px včetně odsazení, na střed. Pruhy s pozadím (hlavička, rituál,
+     kontakt, patička) zůstávají přes celou šířku — kontejner tvoří odsazení
+     --pad-x, ne obalový prvek. Pod 768 px platí původní hodnoty. */
+  @media (min-width: 768px) {
+    :root {
+      --pad: clamp(20px, 5vw, 48px);
+      --pad-x: max(var(--pad), calc((100% - 1200px) / 2 + var(--pad)));
+    }
+    .topbar, .hero, .section, .process, .contact, footer { padding-inline: var(--pad-x); }
+    /* Mezery mezi kartami jsou podklad gridu; content-box ho drží jen pod
+       kartami, odsazení po stranách má barvu stránky. */
+    .values { padding-inline: var(--pad-x); background-clip: content-box; }
+    .treatments, .products-head, .products, .extras, .process-inner,
+    .contact-inner, .review-cards, .footer-inner, .footer-legal { max-width: none; }
+
+    .hero {
+      display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: clamp(32px, 5vw, 80px);
+    }
+    .hero-media { max-width: 520px; margin: 0; justify-self: end; }
+    .hero-copy h1 { font-size: clamp(2.5rem, 4.5vw + 1rem, 5rem); }
+  }
 </style>
 </head>
 <body>
@@ -714,7 +738,7 @@
   <div class="hero-media">
     <div class="hero-photo">
       <picture>
-        <source type="image/webp" srcset="../../Fotky/main-800.webp 800w, ../../Fotky/main-1600.webp 1600w" sizes="(max-width: 900px) calc(100vw - 32px), 560px">
+        <source type="image/webp" srcset="../../Fotky/main-800.webp 800w, ../../Fotky/main-1600.webp 1600w" sizes="(max-width: 900px) calc(100vw - 32px), 520px">
         <img src="../../Fotky/main.JPG" alt="Detail pleti — vlevo stav před návštěvou salonu, vpravo po ní" width="2048" height="1530" fetchpriority="high" decoding="async">
       </picture>
       <div class="hero-badge">
