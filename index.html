@@ -135,8 +135,8 @@
   }
   .brandmark { display: flex; align-items: baseline; gap: 9px; min-width: 0; }
   .brandmark .name {
-    font-family: 'EB Garamond', Georgia, serif; font-size: clamp(19px, 4vw, 22px);
-    font-weight: 700; letter-spacing: -0.2px; color: var(--ink); white-space: nowrap;
+    font-family: 'EB Garamond', Georgia, serif; font-size: clamp(22px, 4.4vw, 26px);
+    font-weight: 700; letter-spacing: 0; color: var(--ink); white-space: nowrap;
   }
   .brandmark .tag {
     font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
@@ -209,12 +209,10 @@
     font-size: 11.5px; letter-spacing: 1.6px; text-transform: uppercase;
     color: var(--accent-dark); font-weight: 700;
   }
-  /* Barlow je groteska — proti serifu, který tu byl dřív, nese při stejné
-     velikosti výrazně víc plochy. Nadpisy proto jdou dolů zhruba o čtvrtinu,
-     váha nahoru a prostrkání do minusu, jinak by stránku přeřvaly. */
+  /* EB Garamond je užší než Fraunces, nadpisy proto nesou větší stupeň (písmo C). */
   .hero-copy h1 {
-    font-weight: 500; font-size: clamp(40px, 5.8vw, 72px); line-height: 1.02;
-    margin: 20px 0 0; letter-spacing: -0.02em; text-wrap: balance;
+    font-weight: 600; font-size: clamp(42px, 6.8vw, 80px); line-height: 1.0;
+    margin: 20px 0 0; letter-spacing: -0.01em; text-wrap: balance;
   }
   .hero-copy h1 em { font-style: italic; color: var(--accent); }
   .hero-copy h1 .h1-where {
@@ -266,11 +264,11 @@
 
   /* ===== Sections ===== */
   .section { padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 64px); }
-  .eyebrow { font-size: 12px; letter-spacing: 2.6px; text-transform: uppercase; color: var(--accent-dark); font-weight: 700; }
+  .eyebrow { font-size: 12px; letter-spacing: 3.2px; text-transform: uppercase; color: var(--accent-dark); font-weight: 700; }
   .section-head { text-align: center; max-width: 640px; margin: 0 auto; }
   .section-head h2 {
-    font-weight: 500; font-size: clamp(32px, 4.2vw, 52px); margin: 14px 0 12px;
-    letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance;
+    font-weight: 600; font-size: clamp(34px, 4.8vw, 56px); margin: 14px 0 12px;
+    letter-spacing: -0.01em; line-height: 1.05; text-wrap: balance;
   }
   .section-head p { font-size: 16px; line-height: 1.65; color: var(--body); margin: 0; text-wrap: pretty; }
 
@@ -316,20 +314,20 @@
   .card details { margin-top: 6px; }
   .card details summary {
     display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
-    font-size: 13px; font-weight: 700; color: var(--accent); min-height: 36px;
+    font-size: 13px; font-weight: 700; color: var(--accent); min-height: 44px;
   }
   .card details .rest { font-size: 14.5px; line-height: 1.62; color: var(--body); margin: 2px 0 0; text-wrap: pretty; }
   .card-foot {
     display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between;
     gap: 12px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line-inner);
   }
-  .price { font-family: 'EB Garamond', Georgia, serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .price { font-family: 'EB Garamond', Georgia, serif; font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
 
   /* ===== Process ===== */
   .process { background: var(--bg-section); padding: clamp(48px, 7vw, 92px) clamp(16px, 4vw, 64px); }
   .process-inner { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: clamp(28px, 5vw, 70px); align-items: center; }
   .process-copy { flex: 1 1 330px; min-width: 0; }
-  .process-copy h2 { font-weight: 500; font-size: clamp(32px, 4vw, 48px); margin: 14px 0 16px; letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance; }
+  .process-copy h2 { font-weight: 600; font-size: clamp(34px, 4.8vw, 56px); margin: 14px 0 16px; letter-spacing: -0.01em; line-height: 1.05; text-wrap: balance; }
   .process-copy p { font-size: 16px; line-height: 1.65; color: #5E5245; margin: 0 0 22px; text-wrap: pretty; }
   .steps { flex: 1 1 380px; min-width: 0; display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
   .steps li {
@@ -472,8 +470,8 @@
   .contact-copy { flex: 1 1 360px; min-width: 0; }
   .contact .eyebrow { color: var(--accent-light); }
   .contact-copy h2 {
-    font-weight: 500; font-size: clamp(32px, 4.4vw, 56px); margin: 14px 0 18px;
-    line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance;
+    font-weight: 600; font-size: clamp(34px, 4.8vw, 56px); margin: 14px 0 18px;
+    line-height: 1.05; letter-spacing: -0.01em; text-wrap: balance;
   }
   .contact-copy p { font-size: 16.5px; line-height: 1.65; color: #DCCEBF; max-width: 480px; margin: 0 0 28px; text-wrap: pretty; }
   .btn-phone {
@@ -493,13 +491,13 @@
   }
   .contact-card .v { font-size: 17px; line-height: 1.5; color: var(--bg); }
   .contact-card .maplink {
-    display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; min-height: 40px;
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; min-height: 44px;
     font-size: 14px; font-weight: 700; color: var(--accent-light);
     border-bottom: 1px solid rgba(224,180,145,0.4);
   }
   .contact-card .maplink:hover { color: var(--bg); }
   .contact-card .mail {
-    display: inline-flex; align-items: center; min-height: 40px;
+    display: inline-flex; align-items: center; min-height: 44px;
     font-size: 16.5px; color: var(--bg); word-break: break-word;
   }
   .contact-card .mail:hover { color: var(--accent-light); }
@@ -516,7 +514,7 @@
     max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap;
     gap: 12px 20px; align-items: center; justify-content: space-between;
   }
-  .footer-inner .name { font-family: 'EB Garamond', Georgia, serif; font-size: 19px; font-weight: 700; letter-spacing: -0.2px; color: var(--bg); }
+  .footer-inner .name { font-family: 'EB Garamond', Georgia, serif; font-size: clamp(22px, 4.4vw, 26px); font-weight: 700; letter-spacing: 0; color: var(--bg); }
   .footer-inner .tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-light); font-weight: 700; }
   .footer-meta { font-size: 13.5px; color: #B3A493; }
   .footer-meta a { color: var(--accent-light); font-weight: 700; }
@@ -552,7 +550,14 @@
   .review-body { min-width: 0; }
   .review-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-top: 4px; }
   .review-name { font-weight: 800; font-size: 16px; color: var(--ink); }
-  .review-sign { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
+  .review-sign { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 12px 0 0; font-size: 13px; color: var(--muted); }
+  .review-g {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px 2px 5px; border-radius: 100px;
+    background: rgba(110,97,87,0.12); color: var(--muted);
+    font-size: 11px; font-weight: 700; line-height: 1.3; letter-spacing: 0.01em;
+  }
+  .review-g svg { width: 12px; height: 12px; display: block; flex-shrink: 0; }
   .review-text { margin: 10px 0 0; font-size: 15px; line-height: 1.6; color: var(--body); text-wrap: pretty; white-space: pre-line; }
   .review-text.is-clamped { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
   .review-more {
@@ -561,7 +566,28 @@
     min-height: 44px;
   }
   .review-more:hover { color: var(--accent-dark); }
-  .reviews-note { text-align: center; margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+  .reviews-note { text-align: center; margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+  .reviews-info {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px;
+    color: var(--muted); font-weight: 600;
+    text-decoration: underline; text-decoration-color: rgba(110,97,87,0.4); text-underline-offset: 3px;
+  }
+  .reviews-info:hover { color: var(--ink-soft); text-decoration-color: currentColor; }
+  .reviews-info:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+  .footer-legal { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0 18px; }
+  .footer-legal > span { padding: 14px 0; }
+  /* Základ 260 px: na úzkém displeji jde blok hned na vlastní řádek, takže se
+     po otevření neposouvá a text nemá úzký sloupec vedle IČO. */
+  .about-reviews { flex: 1 1 260px; min-width: 0; }
+  .about-reviews summary {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 44px; cursor: pointer;
+    color: var(--accent-light); font-weight: 700; font-size: 12.5px;
+  }
+  .about-reviews summary span { font-size: 10px; transition: transform .2s ease; }
+  .about-reviews[open] summary span { transform: rotate(180deg); }
+  .about-reviews summary:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 3px; }
+  .about-reviews p { margin: 0 0 6px; max-width: 64ch; font-size: 13px; line-height: 1.6; color: #C9BAA9; text-wrap: pretty; }
   .reviews-more { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 28px 0 0; }
 
   /* ===== WhatsApp ===== */
@@ -630,12 +656,29 @@
     }
   }
 
-  /* Písmo C: větší nadpisy (Garamond je užší než Fraunces). */
-  .hero-copy h1 { font-weight: 600; letter-spacing: -0.01em; font-size: clamp(42px, 6.8vw, 80px); line-height: 1.0; }
-  .section-head h2, .process-copy h2, .contact-copy h2 { font-weight: 600; letter-spacing: -0.01em; font-size: clamp(34px, 4.8vw, 56px); line-height: 1.05; }
-  .brandmark .name, .footer-inner .name { font-size: clamp(22px, 4.4vw, 26px); font-weight: 700; letter-spacing: 0; }
-  .price { font-size: 32px; font-weight: 700; }
-  .eyebrow { letter-spacing: 3.2px; }
+  /* ===== Společný kontejner od 768 px =====
+     1200 px včetně odsazení, na střed. Pruhy s pozadím (hlavička, rituál,
+     kontakt, patička) zůstávají přes celou šířku — kontejner tvoří odsazení
+     --pad-x, ne obalový prvek. Pod 768 px platí původní hodnoty. */
+  @media (min-width: 768px) {
+    :root {
+      --pad: clamp(20px, 5vw, 48px);
+      --pad-x: max(var(--pad), calc((100% - 1200px) / 2 + var(--pad)));
+    }
+    .topbar, .hero, .section, .process, .contact, footer { padding-inline: var(--pad-x); }
+    /* Mezery mezi kartami jsou podklad gridu; content-box ho drží jen pod
+       kartami, odsazení po stranách má barvu stránky. */
+    .values { padding-inline: var(--pad-x); background-clip: content-box; }
+    .treatments, .products-head, .products, .extras, .process-inner,
+    .contact-inner, .review-cards, .footer-inner, .footer-legal { max-width: none; }
+
+    .hero {
+      display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: clamp(32px, 5vw, 80px);
+    }
+    .hero-media { max-width: 520px; margin: 0; justify-self: end; }
+    .hero-copy h1 { font-size: clamp(2.5rem, 4.5vw + 1rem, 5rem); }
+  }
 </style>
 </head>
 <body>
@@ -1081,7 +1124,7 @@
     <h2>Co říkají recenze</h2>
   </div>
   <div class="review-summary" data-summary></div>
-  <p class="reviews-note">Výběr z recenzí na Google. Neověřujeme, zda autoři službu využili.</p>
+  <p class="reviews-note"><a class="reviews-info" href="#o-recenzich" aria-controls="o-recenzich">O recenzích</a></p>
   <div class="review-cards" data-cards></div>
   <p class="reviews-more">
     <a class="btn btn-outline btn-process" href="https://search.google.com/local/writereview?placeid=ChIJ10bNiKSUC0cRYVidi0JsOM4" target="_blank" rel="noopener">Napsat recenzi na Google</a>
@@ -1133,7 +1176,13 @@
     </div>
     <div class="footer-meta">Praha 8 – Karlín · <a href="tel:+420775502224">+420 775 502 224</a> · <a href="https://wa.me/420775502224" target="_blank" rel="noopener">WhatsApp</a></div>
   </div>
-  <div class="footer-legal">Radka Šoukalová · IČO: 01289306</div>
+  <div class="footer-legal">
+    <span>Radka Šoukalová · IČO: 01289306</span>
+    <details id="o-recenzich" class="about-reviews">
+      <summary>O recenzích <span aria-hidden="true">▾</span></summary>
+      <p>Recenze jsou vybrané z našeho profilu na Google. Jejich autory neověřujeme, jména pro soukromí zkracujeme. Pokud byste svou recenzi chtěli odsud stáhnout, stačí nám napsat.</p>
+    </details>
+  </div>
 </footer>
 
 <div class="floating-bar">
@@ -1235,7 +1284,7 @@
 <script>
   /* Recenze. Prázdné pole = sekce #recenze zůstane skrytá.
      Doplňte jen text přečtený doslova z Google profilu, nic nevymýšlejte.
-     Příklad položky (nechat zakomentované, dokud text není ověřený):
+     Příklad položky (nechat zakomentované, dokud text není převzatý doslova z profilu):
      { name: "Jana N.", stars: 5, date: "březen 2026", text: "Doslovný text recenze." }
      Další karty = další objekty ve stejném poli. */
   var RECENZE = [
@@ -1296,8 +1345,10 @@
         body.appendChild(more);
       }
       /* Jméno jen zkrácené, přesně podle podpisu na Googlu (rozhodnutí Radima v #11, D2). */
-      var podpis = (typeof r.date === 'string' && r.date.trim()) ? r.date.trim() + ' · Google' : 'Google';
-      body.appendChild(el('p', 'review-sign', podpis));
+      var sign = el('p', 'review-sign');
+      if (typeof r.date === 'string' && r.date.trim()) sign.appendChild(document.createTextNode(r.date.trim() + ' · '));
+      sign.appendChild(googleOdznak());
+      body.appendChild(sign);
       card.appendChild(body);
       cards.appendChild(card);
     });
@@ -1325,10 +1376,54 @@
 
     function googleZnacka() {
       var wrap = el('span', 'g-mark');
-      wrap.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1C3.4 21.3 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.4 14.4c-.2-.7-.4-1.4-.4-2.4s.1-1.7.4-2.4V6.5H1.4C.5 8.3 0 10.1 0 12s.5 3.7 1.4 5.5l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.7 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.1 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.5l4 3.1C6.3 6.8 8.9 4.8 12 4.8z"/></svg>';
+      wrap.appendChild(googleG());
       wrap.appendChild(el('span', null, 'Google'));
       return wrap;
     }
+
+    function googleOdznak() {
+      var wrap = el('span', 'review-g');
+      wrap.appendChild(googleG());
+      wrap.appendChild(document.createTextNode('z Google'));
+      return wrap;
+    }
+
+    function googleG() {
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.innerHTML = '<path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1C3.4 21.3 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.4 14.4c-.2-.7-.4-1.4-.4-2.4s.1-1.7.4-2.4V6.5H1.4C.5 8.3 0 10.1 0 12s.5 3.7 1.4 5.5l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.7 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.1 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.5l4 3.1C6.3 6.8 8.9 4.8 12 4.8z"/>';
+      return svg;
+    }
+  })();
+</script>
+
+<script>
+  /* „O recenzích“: odkaz u recenzí otevře vysvětlení v patičce a dojede k němu.
+     Bez JS zbývá obyčejná kotva #o-recenzich (blok je zavřený, ale na očích). */
+  (function () {
+    var box = document.getElementById('o-recenzich');
+    if (!box) return;
+    var klidnyRezim = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function ukaz(posun) {
+      box.open = true;
+      if (posun) box.scrollIntoView({ behavior: klidnyRezim.matches ? 'auto' : 'smooth', block: 'start' });
+      var summary = box.querySelector('summary');
+      if (summary) summary.focus({ preventScroll: true });
+    }
+
+    document.querySelectorAll('a[href="#o-recenzich"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (history.replaceState) history.replaceState(null, '', '#o-recenzich');
+        ukaz(true);
+      });
+    });
+    if (location.hash === '#o-recenzich') ukaz(false);
+    window.addEventListener('hashchange', function () {
+      if (location.hash === '#o-recenzich') ukaz(true);
+    });
   })();
 </script>
 
