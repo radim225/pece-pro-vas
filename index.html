@@ -550,7 +550,8 @@
   }
   .review-body { min-width: 0; }
   .review-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-top: 4px; }
-  .review-sign { margin: 12px 0 0; font-size: 13.5px; font-weight: 700; color: var(--muted); }
+  .review-name { font-weight: 800; font-size: 16px; color: var(--ink); }
+  .review-sign { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
   .review-text { margin: 10px 0 0; font-size: 15px; line-height: 1.6; color: var(--body); text-wrap: pretty; white-space: pre-line; }
   .review-text.is-clamped { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
   .review-more {
@@ -559,7 +560,7 @@
     min-height: 44px;
   }
   .review-more:hover { color: var(--accent-dark); }
-  .reviews-note { text-align: center; margin: 16px 0 0; font-size: 13px; color: var(--muted); }
+  .reviews-note { text-align: center; margin: 10px 0 0; font-size: 13px; color: var(--muted); }
   .reviews-more { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 28px 0 0; }
 
   /* ===== WhatsApp ===== */
@@ -1067,7 +1068,8 @@
 <!--
   Recenze z Google profilu https://maps.app.goo.gl/9VuxbkKFMu3voxbM8
   16. 10. 2026 přečteny doslova z veřejných dat Map (průměr 5,0 ze 3 recenzí).
-  Bez jmen autorů (rozhodnutí #11, D2), podpis „Klientka · Google recenze“. Text se nesmí upravovat ani zkracovat;
+  Jméno = křestní + iniciála příjmení přesně podle podpisu na Googlu (Radim, #11, D2). Na žádost autora
+  recenzi i jméno hned odstranit. Text se nesmí upravovat ani zkracovat;
   dlouhé recenze se jen vizuálně sbalí s tlačítkem „Číst celou recenzi“.
   Bez aggregateRating ve schema.org: Google hvězdičky z vlastních recenzí
   firmy na jejím webu nezobrazuje (self-serving reviews).
@@ -1078,12 +1080,12 @@
     <h2>Co říkají recenze</h2>
   </div>
   <div class="review-summary" data-summary></div>
+  <p class="reviews-note">Výběr z recenzí na Google. Neověřujeme, zda autoři službu využili.</p>
   <div class="review-cards" data-cards></div>
   <p class="reviews-more">
     <a class="btn btn-outline btn-process" href="https://search.google.com/local/writereview?placeid=ChIJ10bNiKSUC0cRYVidi0JsOM4" target="_blank" rel="noopener">Napsat recenzi na Google</a>
     <a class="btn btn-outline btn-process" href="https://maps.app.goo.gl/9VuxbkKFMu3voxbM8" target="_blank" rel="noopener">Všechny recenze na Google</a>
   </p>
-  <p class="reviews-note">Výběr z recenzí na Google. Neověřujeme, zda autoři službu využili.</p>
 </section>
 
 <!-- ===== CONTACT / BOOKING ===== -->
@@ -1233,12 +1235,12 @@
   /* Recenze. Prázdné pole = sekce #recenze zůstane skrytá.
      Doplňte jen text přečtený doslova z Google profilu, nic nevymýšlejte.
      Příklad položky (nechat zakomentované, dokud text není ověřený):
-     { stars: 5, date: "březen 2026", text: "Doslovný text recenze." }
+     { name: "Jana N.", stars: 5, date: "březen 2026", text: "Doslovný text recenze." }
      Další karty = další objekty ve stejném poli. */
   var RECENZE = [
-    { stars: 5, date: "říjen 2026", text: "Paní Radku mohu z celého srdce jen doporučit! ❤️\nKaždá návštěva je nejen skvělou péčí o pleť, ale také chvilka klidu a relaxace. Je nesmírně milá, má příjemné vystupování a člověk se u ní cítí dobře.\n\nVelmi oceňuji její pečlivost, profesionalitu a individuální přístup. Je vidět, že svou práci opravdu dělá s láskou. Výsledky její práce jsou navíc naprosto úžasné – moje pleť se díky pravidelným návštěvám velmi zlepšila. 🌟\n\nObrovským přínosem pro mě bylo také to, že jsem díky ní mnohem lépe pochopila, jak o svou pleť správně pečovat i doma. Otevřela mi oči v mnoha věcech, které jsem dříve nevěděla, nebo podceňovala.\n\nJsem moc ráda, že jsem paní Radku objevila, a na každou další návštěvu se těším. Pokud hledáte paní kosmetičku, která spojuje lidskou laskavost, profesionalitu a skutečné výsledky, jste na správném místě. Děkuji za všechnu péči a za to, že se díky Vám moje pleť i já cítíme mnohem lépe. ❤️" },
-    { stars: 5, date: "říjen 2026", text: "K paní Radce jsem dostala doporučení od mé sestry a hned po první návštěvě jsem byla nadšená z jejího individuálního přístupu a kvalitní kosmetiky na míru. Vždy odcházím s rozjasněným obličejem a jsem kompletně zrelaxovaná. Vřele doporučuji všem kdo hledají kvalitní péči a příjemný přístup." },
-    { stars: 5, date: "září 2026", text: "K paní Radce chodím už několik let a to hovoří samo za sebe. Oceňuji individuální a empatický přístup. Vřele doporučuji" }
+    { name: "Daniela F.", stars: 5, date: "říjen 2026", text: "Paní Radku mohu z celého srdce jen doporučit! ❤️\nKaždá návštěva je nejen skvělou péčí o pleť, ale také chvilka klidu a relaxace. Je nesmírně milá, má příjemné vystupování a člověk se u ní cítí dobře.\n\nVelmi oceňuji její pečlivost, profesionalitu a individuální přístup. Je vidět, že svou práci opravdu dělá s láskou. Výsledky její práce jsou navíc naprosto úžasné – moje pleť se díky pravidelným návštěvám velmi zlepšila. 🌟\n\nObrovským přínosem pro mě bylo také to, že jsem díky ní mnohem lépe pochopila, jak o svou pleť správně pečovat i doma. Otevřela mi oči v mnoha věcech, které jsem dříve nevěděla, nebo podceňovala.\n\nJsem moc ráda, že jsem paní Radku objevila, a na každou další návštěvu se těším. Pokud hledáte paní kosmetičku, která spojuje lidskou laskavost, profesionalitu a skutečné výsledky, jste na správném místě. Děkuji za všechnu péči a za to, že se díky Vám moje pleť i já cítíme mnohem lépe. ❤️" },
+    { name: "Jana F.", stars: 5, date: "říjen 2026", text: "K paní Radce jsem dostala doporučení od mé sestry a hned po první návštěvě jsem byla nadšená z jejího individuálního přístupu a kvalitní kosmetiky na míru. Vždy odcházím s rozjasněným obličejem a jsem kompletně zrelaxovaná. Vřele doporučuji všem kdo hledají kvalitní péči a příjemný přístup." },
+    { name: "Alena S.", stars: 5, date: "září 2026", text: "K paní Radce chodím už několik let a to hovoří samo za sebe. Oceňuji individuální a empatický přístup. Vřele doporučuji" }
   ];
 
   (function () {
@@ -1272,6 +1274,7 @@
       var body = el('div', 'review-body');
       var meta = el('div', 'review-meta');
       meta.appendChild(hvezdicky(r.stars));
+      if (typeof r.name === 'string' && r.name.trim()) meta.appendChild(el('span', 'review-name', r.name.trim()));
       body.appendChild(meta);
       var text = el('p', 'review-text', r.text.trim());
       body.appendChild(text);
@@ -1291,9 +1294,8 @@
         });
         body.appendChild(more);
       }
-      /* Bez jmen autorů (rozhodnutí #11, D2): jméno + text je dohledatelný osobní údaj. */
-      var podpis = 'Klientka · Google recenze';
-      if (typeof r.date === 'string' && r.date.trim()) podpis += ' · ' + r.date.trim();
+      /* Jméno jen zkrácené, přesně podle podpisu na Googlu (rozhodnutí Radima v #11, D2). */
+      var podpis = (typeof r.date === 'string' && r.date.trim()) ? r.date.trim() + ' · Google' : 'Google';
       body.appendChild(el('p', 'review-sign', podpis));
       card.appendChild(body);
       cards.appendChild(card);
