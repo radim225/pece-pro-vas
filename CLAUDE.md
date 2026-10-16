@@ -29,7 +29,7 @@ Kontrola před commitem: `grep -n -i -E "openingHours|otevírací" index.html` m
 
 ## Recenze
 
-Text recenzí z Google profilu se přebírá **doslova** (pole `RECENZE` na konci `index.html`), nic se nezkracuje ani neupravuje. Do schema.org se nedává `aggregateRating`: Google hvězdičky z vlastních recenzí firmy na jejím webu nezobrazuje.
+Text recenzí z Google profilu se přebírá **doslova** (pole `RECENZE` na konci `index.html`), nic se nezkracuje ani neupravuje. **Bez jmen autorů** (ani zkrácených, jde o dohledatelný osobní údaj); karta je podepsaná „Klientka · Google recenze · měsíc rok“. Jméno jen se souhlasem klientky. *(Grok/Design UX, #11, 2026-10-16)* Do schema.org se nedává `aggregateRating`: Google hvězdičky z vlastních recenzí firmy na jejím webu nezobrazuje.
 
 ## Popisky produktů a ošetřujících úkonů
 
