@@ -109,7 +109,7 @@ ZDROJE = {'maps-public': zdroj_maps_public, 'gbp-api': zdroj_gbp_api}
 
 def jmeno(author, fmt):
     author = author.strip()
-    if fmt == 'full' or ' ' not in author:
+    if fmt == 'full' or ' ' not in author:  # 'none' se řeší v radky(): jméno se nevypisuje vůbec
         return author
     first, rest = author.split(' ', 1)
     return f'{first} {rest.strip()[0]}.'  # 'first_initial': „Daniela F.“
@@ -124,8 +124,10 @@ def radky(recenze, cfg):
     out = []
     for r in vyber:
         t = r['time'].astimezone(tz)
-        out.append('    { name: %s, stars: %d, date: %s, text: %s }' % (
-            json.dumps(jmeno(r['author'], cfg.get('name_format', 'first_initial')), ensure_ascii=False),
+        fmt = cfg.get('name_format', 'none')
+        jm = '' if fmt == 'none' else 'name: %s, ' % json.dumps(jmeno(r['author'], fmt), ensure_ascii=False)
+        out.append('    { %sstars: %d, date: %s, text: %s }' % (
+            jm,
             r['stars'],
             json.dumps(f'{MESICE[t.month - 1]} {t.year}', ensure_ascii=False),
             json.dumps(r['text'].strip(), ensure_ascii=False)))

@@ -5,7 +5,7 @@
   "gbp_account": "DOPLNIT_PO_SCHVALENI_API",
   "gbp_location": "DOPLNIT_PO_SCHVALENI_API",
   "target": "../index.html",
-  "name_format": "first_initial",
+  "name_format": "none",
   "max": 0,
   "timezone": "Europe/Prague"
 }
