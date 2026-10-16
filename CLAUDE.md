@@ -21,6 +21,16 @@ Nejde o hledání a nahrazení jedním výrazem — čeština to nedovolí. Ři�
 
 Kontrola před commitem: `grep -i "ošetř" index.html` musí být prázdné.
 
+## Otevírací doba — nikdy nezobrazovat
+
+Salon funguje **jen na objednání**. Otevírací doba se nesmí objevit nikde: ve viditelném textu, ve schema.org (`openingHours`, `openingHoursSpecification`) ani v Google profilu. *(Radim přes Grok bota, Notion projekt Mamky web, 2026-10-16)*
+
+Kontrola před commitem: `grep -n -i -E "openingHours|otevírací" index.html` musí být prázdné.
+
+## Recenze
+
+Text recenzí z Google profilu se přebírá **doslova** (pole `RECENZE` na konci `index.html`), nic se nezkracuje ani neupravuje. **Jméno autora jen zkrácené** na křestní + iniciálu příjmení přesně podle podpisu na Googlu („Daniela F.“), nic nedomýšlet. Na žádost autora recenzi i jméno hned odstranit. Pod průměrem zůstává poznámka „Výběr z recenzí na Google. Neověřujeme, zda autoři službu využili.“ *(Radim, #11, 2026-10-16 21:34)* Do schema.org se nedává `aggregateRating`: Google hvězdičky z vlastních recenzí firmy na jejím webu nezobrazuje.
+
 ## Popisky produktů a ošetřujících úkonů
 
 **Piš jen to, co je doložitelné** — text na obalu produktu nebo už existující text webu. Nic nedomýšlej, nedopočítávej texturu ani účinky z fotky. Dřívější návrh obsahoval smyšlený claim („posilují přirozenou obranu pleti"), faktickou chybu („tělové mléko", ačkoli na tubě stojí jen `BODY`) a claim přiřčený produktům, na kterých natištěný není. U kosmetiky na webu reálné firmy je to kategorie chyb, která se nesmí dostat ven.
