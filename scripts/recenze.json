@@ -1,0 +1,11 @@
+{
+  "_popis": "Konfigurace pro recenze_sync.py. Pro jiný web zkopírovat a změnit maps_url / gbp_* a target.",
+  "source": "maps-public",
+  "maps_url": "https://www.google.com/maps/place/P%C3%A9%C4%8De+pro+V%C3%A1s/@50.0936384,14.4488901,17z/data=!3m1!4b1!4m6!3m5!1s0x470b94a488cd46d7:0xce386c428b9d5861!8m2!3d50.093635!4d14.451465!16s%2Fg%2F11hc_ft3yh?hl=cs",
+  "gbp_account": "DOPLNIT_PO_SCHVALENI_API",
+  "gbp_location": "DOPLNIT_PO_SCHVALENI_API",
+  "target": "../index.html",
+  "name_format": "first_initial",
+  "max": 0,
+  "timezone": "Europe/Prague"
+}
