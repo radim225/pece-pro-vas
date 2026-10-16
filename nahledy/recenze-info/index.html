@@ -561,7 +561,28 @@
     min-height: 44px;
   }
   .review-more:hover { color: var(--accent-dark); }
-  .reviews-note { text-align: center; margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+  .reviews-note { text-align: center; margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+  .reviews-info {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px;
+    color: var(--muted); font-weight: 600;
+    text-decoration: underline; text-decoration-color: rgba(110,97,87,0.4); text-underline-offset: 3px;
+  }
+  .reviews-info:hover { color: var(--ink-soft); text-decoration-color: currentColor; }
+
+  .footer-legal { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0 18px; }
+  .footer-legal > span { padding: 14px 0; }
+  /* Základ 260 px: na úzkém displeji jde blok hned na vlastní řádek, takže se
+     po otevření neposouvá a text nemá úzký sloupec vedle IČO. */
+  .about-reviews { flex: 1 1 260px; min-width: 0; }
+  .about-reviews summary {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 44px; cursor: pointer;
+    color: var(--accent-light); font-weight: 700; font-size: 12.5px;
+  }
+  .about-reviews summary span { font-size: 10px; transition: transform .2s ease; }
+  .about-reviews[open] summary span { transform: rotate(180deg); }
+  .about-reviews summary:focus-visible { outline-color: var(--accent-light); }
+  .about-reviews p { margin: 0 0 6px; max-width: 64ch; font-size: 13px; line-height: 1.6; color: #C9BAA9; text-wrap: pretty; }
+  .about-reviews p a { color: var(--accent-light); text-decoration: underline; text-underline-offset: 2px; }
   .reviews-more { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 28px 0 0; }
 
   /* ===== WhatsApp ===== */
@@ -1081,7 +1102,7 @@
     <h2>Co říkají recenze</h2>
   </div>
   <div class="review-summary" data-summary></div>
-  <p class="reviews-note">Výběr z recenzí na Google. Neověřujeme, zda autoři službu využili.</p>
+  <p class="reviews-note"><a class="reviews-info" href="#o-recenzich" aria-controls="o-recenzich">O recenzích</a></p>
   <div class="review-cards" data-cards></div>
   <p class="reviews-more">
     <a class="btn btn-outline btn-process" href="https://search.google.com/local/writereview?placeid=ChIJ10bNiKSUC0cRYVidi0JsOM4" target="_blank" rel="noopener">Napsat recenzi na Google</a>
@@ -1133,7 +1154,13 @@
     </div>
     <div class="footer-meta">Praha 8 – Karlín · <a href="tel:+420775502224">+420 775 502 224</a> · <a href="https://wa.me/420775502224" target="_blank" rel="noopener">WhatsApp</a></div>
   </div>
-  <div class="footer-legal">Radka Šoukalová · IČO: 01289306</div>
+  <div class="footer-legal">
+    <span>Radka Šoukalová · IČO: 01289306</span>
+    <details id="o-recenzich" class="about-reviews">
+      <summary>O recenzích <span aria-hidden="true">▾</span></summary>
+      <p>Zobrazujeme výběr recenzí z Google. Autorky jsou naše klientky, které osobně známe; jinak recenze neověřujeme. Jména zkracujeme na křestní jméno a iniciálu příjmení. Pokud si nepřejete, aby zde byla vaše recenze, <a href="mailto:peceprovas@gmail.com">napište nám</a> a hned ji odstraníme.</p>
+    </details>
+  </div>
 </footer>
 
 <div class="floating-bar">
@@ -1229,6 +1256,32 @@
     rail.addEventListener('scroll', mark, { passive: true });
     window.addEventListener('resize', build);
     build();
+  })();
+
+  /* „O recenzích“: odkaz u recenzí otevře vysvětlení v patičce a dojede k němu.
+     Bez JS zbývá obyčejná kotva #o-recenzich (blok je zavřený, ale na očích). */
+  (function () {
+    var box = document.getElementById('o-recenzich');
+    if (!box) return;
+    var klidnyRezim = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function ukaz(posun) {
+      box.open = true;
+      if (posun) box.scrollIntoView({ behavior: klidnyRezim.matches ? 'auto' : 'smooth', block: 'start' });
+      box.querySelector('summary').focus({ preventScroll: true });
+    }
+
+    document.querySelectorAll('a[href="#o-recenzich"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (history.replaceState) history.replaceState(null, '', '#o-recenzich');
+        ukaz(true);
+      });
+    });
+    if (location.hash === '#o-recenzich') ukaz(false);
+    window.addEventListener('hashchange', function () {
+      if (location.hash === '#o-recenzich') ukaz(true);
+    });
   })();
 </script>
 
