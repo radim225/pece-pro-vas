@@ -674,10 +674,16 @@
 
     .hero {
       display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      align-items: center;
       gap: clamp(32px, 5vw, 80px);
+      min-height: min(80vh, 760px);
     }
     .hero-media { max-width: 520px; margin: 0; justify-self: end; }
     .hero-copy h1 { font-size: clamp(2.5rem, 4.5vw + 1rem, 5rem); }
+    .hero-copy .lede {
+      font-size: clamp(1.05rem, 0.4vw + 0.95rem, 1.25rem);
+      max-width: 34ch;
+    }
   }
 </style>
 </head>
