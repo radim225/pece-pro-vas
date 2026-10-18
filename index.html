@@ -134,6 +134,10 @@
     border-bottom: 1px solid var(--line);
   }
   .brandmark { display: flex; align-items: baseline; gap: 9px; min-width: 0; }
+  /* Logo v hlavičce: 44px pro prst. Zámek drží „Kosmetika“ na účaří názvu,
+     takže se text neposune — jen se zvětší plocha odkazu. */
+  .topbar .brandmark { display: inline-flex; min-height: 44px; align-items: center; }
+  .topbar .brandmark-lockup { display: flex; align-items: baseline; gap: 9px; min-width: 0; }
   .brandmark .name {
     font-family: 'EB Garamond', Georgia, serif; font-size: clamp(22px, 4.4vw, 26px);
     font-weight: 700; letter-spacing: 0; color: var(--ink); white-space: nowrap;
@@ -226,7 +230,14 @@
   .hero-copy .lede strong { color: var(--ink); font-weight: 700; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
   .hero-note { margin-top: 22px; font-size: 14.5px; color: var(--muted); }
-  .hero-note a { font-weight: 700; border-bottom: 1px solid rgba(150,89,63,0.4); }
+  /* Číslo v řádku s WhatsApp: 44px pro prst. Záporný margin nechá výšku řádku,
+     podtržení drží u písma (ne u spodní hrany plochy). */
+  .hero-note a {
+    display: inline-flex; align-items: center; min-height: 44px;
+    margin-block: -12.5px; font-weight: 700;
+    text-decoration: underline; text-decoration-thickness: 1px;
+    text-decoration-color: rgba(150,89,63,0.4); text-underline-offset: 0.15em;
+  }
 
   .hero-media {
     flex: 0 1 460px; min-width: 0; width: 100%; max-width: 560px; margin: 0 auto;
@@ -684,6 +695,14 @@
       font-size: clamp(1.05rem, 0.4vw + 0.95rem, 1.25rem);
       max-width: 34ch;
     }
+
+    /* Od 768 px vedle sebe s 16px mezerou; když se nevejdou, zůstanou pod sebou
+       s 12px. Pod 768 px platí původní margin-top odkazů. */
+    .contact-card .maplinks {
+      display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center;
+      margin-top: 12px;
+    }
+    .contact-card .maplinks .maplink { margin-top: 0; }
   }
 </style>
 </head>
@@ -694,8 +713,10 @@
 <!-- ===== TOP BAR ===== -->
 <header class="topbar">
   <a class="brandmark" href="#top">
-    <span class="name">Péče PRO VÁS</span>
-    <span class="tag">Kosmetika</span>
+    <span class="brandmark-lockup">
+      <span class="name">Péče PRO VÁS</span>
+      <span class="tag">Kosmetika</span>
+    </span>
   </a>
 
   <nav class="nav-desktop">
@@ -1159,8 +1180,10 @@
       <div class="contact-card">
         <div class="k">Adresa</div>
         <div class="v">Thámova 191/21<br>Praha 8 – Karlín</div>
-        <a class="maplink" href="https://www.google.com/maps/place/P%C3%A9%C4%8De+pro+V%C3%A1s/@50.0936384,14.4488901,17z/data=!3m1!4b1!4m6!3m5!1s0x470b94a488cd46d7:0xce386c428b9d5861!8m2!3d50.093635!4d14.451465!16s%2Fg%2F11hc_ft3yh" target="_blank" rel="noopener">Zobrazit na mapě <span aria-hidden="true">↗</span></a>
-        <a class="maplink" href="https://maps.app.goo.gl/9VuxbkKFMu3voxbM8" target="_blank" rel="noopener">Přečíst / napsat recenzi na Google <span aria-hidden="true">↗</span></a>
+        <div class="maplinks">
+          <a class="maplink" href="https://www.google.com/maps/place/P%C3%A9%C4%8De+pro+V%C3%A1s/@50.0936384,14.4488901,17z/data=!3m1!4b1!4m6!3m5!1s0x470b94a488cd46d7:0xce386c428b9d5861!8m2!3d50.093635!4d14.451465!16s%2Fg%2F11hc_ft3yh" target="_blank" rel="noopener">Zobrazit na mapě <span aria-hidden="true">↗</span></a>
+          <a class="maplink" href="https://maps.app.goo.gl/9VuxbkKFMu3voxbM8" target="_blank" rel="noopener">Přečíst / napsat recenzi na Google <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
       <div class="contact-card">
         <div class="k">E-mail</div>
