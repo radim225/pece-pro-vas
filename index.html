@@ -501,11 +501,17 @@
     color: var(--accent-light); font-weight: 700; margin-bottom: 8px;
   }
   .contact-card .v { font-size: 17px; line-height: 1.5; color: var(--bg); }
+  /* Na všech šířkách. Vedle sebe s 16 px, pod sebe s 12 px, když se nevejdou. */
+  .contact-card .maplinks {
+    display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center;
+    margin-top: 12px;
+  }
   .contact-card .maplink {
     display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; min-height: 44px;
     font-size: 14px; font-weight: 700; color: var(--accent-light);
     border-bottom: 1px solid rgba(224,180,145,0.4);
   }
+  .contact-card .maplinks .maplink { margin-top: 0; }
   .contact-card .maplink:hover { color: var(--bg); }
   .contact-card .mail {
     display: inline-flex; align-items: center; min-height: 44px;
@@ -695,14 +701,6 @@
       font-size: clamp(1.05rem, 0.4vw + 0.95rem, 1.25rem);
       max-width: 34ch;
     }
-
-    /* Od 768 px vedle sebe s 16px mezerou; když se nevejdou, zůstanou pod sebou
-       s 12px. Pod 768 px platí původní margin-top odkazů. */
-    .contact-card .maplinks {
-      display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center;
-      margin-top: 12px;
-    }
-    .contact-card .maplinks .maplink { margin-top: 0; }
   }
 </style>
 </head>
