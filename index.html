@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kosmetika Karlín | Péče PRO VÁS – salon Praha 8</title>
-<meta name="description" content="Kosmetický salon Péče PRO VÁS v Karlíně, Praha 8. Prémiová kosmetika Phyris a Bruno Vassari, péče o pleť, úprava obočí a řas, depilace. Objednání telefonicky.">
+<meta name="description" content="Kosmetický salon Péče PRO VÁS v Karlíně, Praha 8. Prémiová kosmetika Phyris a Bruno Vassari, péče o pleť, úprava obočí a řas, depilace. Objednání telefonicky nebo přes WhatsApp.">
 <link rel="canonical" href="https://www.peceprovas.cz/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="cs_CZ">
 <meta property="og:site_name" content="Péče PRO VÁS">
 <meta property="og:url" content="https://www.peceprovas.cz/">
 <meta property="og:title" content="Kosmetika Karlín | Péče PRO VÁS – salon Praha 8">
-<meta property="og:description" content="Kosmetický salon Péče PRO VÁS v Karlíně, Praha 8. Prémiová kosmetika Phyris a Bruno Vassari, péče o pleť, úprava obočí a řas, depilace. Objednání telefonicky.">
+<meta property="og:description" content="Kosmetický salon Péče PRO VÁS v Karlíně, Praha 8. Prémiová kosmetika Phyris a Bruno Vassari, péče o pleť, úprava obočí a řas, depilace. Objednání telefonicky nebo přes WhatsApp.">
 <meta property="og:image" content="https://www.peceprovas.cz/og.jpg">
 <meta property="og:image:secure_url" content="https://www.peceprovas.cz/og.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -20,7 +20,7 @@
 <meta property="og:image:alt" content="Péče PRO VÁS — kosmetický salon v Karlíně, Praha 8. Vpravo kosmetika Phyris See Change.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kosmetika Karlín | Péče PRO VÁS – salon Praha 8">
-<meta name="twitter:description" content="Kosmetický salon Péče PRO VÁS v Karlíně, Praha 8. Prémiová kosmetika Phyris a Bruno Vassari, péče o pleť, úprava obočí a řas, depilace. Objednání telefonicky.">
+<meta name="twitter:description" content="Kosmetický salon Péče PRO VÁS v Karlíně, Praha 8. Prémiová kosmetika Phyris a Bruno Vassari, péče o pleť, úprava obočí a řas, depilace. Objednání telefonicky nebo přes WhatsApp.">
 <meta name="twitter:image" content="https://www.peceprovas.cz/og.jpg">
 <meta name="twitter:image:alt" content="Péče PRO VÁS — kosmetický salon v Karlíně, Praha 8. Vpravo kosmetika Phyris See Change.">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -76,10 +76,12 @@
   "inLanguage": "cs"
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="/fonts/manrope-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/manrope-normal-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ebgaramond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ebgaramond-normal-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="preload" as="image" type="image/webp" href="Fotky/main-800.webp" imagesrcset="Fotky/main-800.webp 800w, Fotky/main-1600.webp 1600w" imagesizes="(max-width: 900px) calc(100vw - 32px), 560px">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F4EBE0;
@@ -485,6 +487,7 @@
     line-height: 1.05; letter-spacing: -0.01em; text-wrap: balance;
   }
   .contact-copy p { font-size: 16.5px; line-height: 1.65; color: #DCCEBF; max-width: 480px; margin: 0 0 28px; text-wrap: pretty; }
+  .contact-copy .fineprint{font-size:13px;font-style:italic;color:#C9B8A6;margin:-14px 0 28px;line-height:1.5}
   .btn-phone {
     gap: 12px; min-height: 64px; padding: 0 30px; font-weight: 800;
     font-size: clamp(18px, 4vw, 20px); background: var(--accent-light); color: var(--ink);
@@ -534,7 +537,7 @@
   .footer-inner .name { font-family: 'EB Garamond', Georgia, serif; font-size: clamp(22px, 4.4vw, 26px); font-weight: 700; letter-spacing: 0; color: var(--bg); }
   .footer-inner .tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-light); font-weight: 700; }
   .footer-meta { font-size: 13.5px; color: #B3A493; }
-  .footer-meta a { color: var(--accent-light); font-weight: 700; }
+  .footer-meta a { color: var(--accent-light); font-weight: 700; display: inline-flex; min-height: 44px; align-items: center; }
   .footer-legal {
     max-width: 1080px; margin: 16px auto 0; padding-top: 16px;
     border-top: 1px solid rgba(179,164,147,0.2);
@@ -594,6 +597,11 @@
 
   .footer-legal { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0 18px; }
   .footer-legal > span { padding: 14px 0; }
+  .footer-privacy {
+    display: inline-flex; align-items: center; min-height: 44px;
+    color: var(--accent-light); font-weight: 700; font-size: 12.5px;
+  }
+  .footer-privacy:hover { color: var(--bg); }
   /* Základ 260 px: na úzkém displeji jde blok hned na vlastní řádek, takže se
      po otevření neposouvá a text nemá úzký sloupec vedle IČO. */
   .about-reviews { flex: 1 1 260px; min-width: 0; }
@@ -751,7 +759,7 @@
   <div class="hero-copy">
     <span class="eyebrow-pill">Kosmetický salon · Praha 8 – Karlín</span>
     <h1>Péči o&nbsp;<em>Vás</em><br>nechte na&nbsp;nás<span class="h1-where">v&nbsp;Karlíně</span></h1>
-    <p class="lede">Kosmetické služby šité přímo na míru vaší pleti. Profesionální péče značkami <strong>Phyris</strong> a <strong>Bruno Vassari</strong> v útulném prostředí karlínského salonu.</p>
+    <p class="lede">Kosmetické služby šité přímo na míru Vaší pleti. Profesionální péče značkami <strong>Phyris</strong> a <strong>Bruno Vassari</strong> v útulném prostředí karlínského salonu.</p>
     <div class="hero-actions">
       <a class="btn btn-outline btn-hero-ghost" href="#kosmeticka-pece">Prohlédnout nabídku péče</a>
     </div>
@@ -782,7 +790,7 @@
   <div>
     <div class="icon" aria-hidden="true">✿</div>
     <h3>Individuální přístup</h3>
-    <p>Péči volím vždy podle typu a aktuálního stavu vaší pleti — nic univerzálního.</p>
+    <p>Péči volím vždy podle typu a aktuálního stavu Vaší pleti — nic univerzálního.</p>
   </div>
   <div>
     <div class="icon" aria-hidden="true">❀</div>
@@ -795,8 +803,8 @@
 <section class="section" id="kosmeticka-pece">
   <div class="section-head">
     <span class="eyebrow">Kosmetická péče</span>
-    <h2>Kosmetická péče na míru vaší pleti v&nbsp;Karlíně</h2>
-    <p>Vyberte značku a najděte kosmetickou péči, která odpovídá potřebám vaší pleti. Každá procedura je kompletní — od čištění po závěrečnou masáž.</p>
+    <h2>Kosmetická péče na míru Vaší pleti v&nbsp;Karlíně</h2>
+    <p>Vyberte značku a najděte kosmetickou péči, která odpovídá potřebám Vaší pleti. Každá procedura je kompletní — od čištění po závěrečnou masáž.</p>
   </div>
 
   <div class="tabs" role="group" aria-label="Filtr podle značky">
@@ -1012,7 +1020,7 @@
     <div class="section-head">
       <span class="eyebrow">Produkty ze salonu</span>
       <h2>Péče, která pokračuje i doma</h2>
-      <p>Kosmetická péče v salonu je jen začátek — o výsledek se stará to, co pro pleť děláte doma mezi návštěvami. Poradím vám, co vaší pleti opravdu sedí, a kosmetiku Phyris i Bruno Vassari si můžete odnést rovnou ze salonu.</p>
+      <p>Kosmetická péče v salonu je jen začátek — o výsledek se stará to, co pro pleť děláte doma mezi návštěvami. Poradím Vám, co Vaší pleti opravdu sedí, a kosmetiku Phyris i Bruno Vassari si můžete odnést rovnou ze salonu.</p>
     </div>
     <figure class="products-photo">
       <picture>
@@ -1162,8 +1170,9 @@
   <div class="contact-inner">
     <div class="contact-copy">
       <span class="eyebrow">Objednání</span>
-      <h2>Zavolejte a domluvíme termín přímo pro vás</h2>
-      <p>Ráda vám poradím s výběrem péče podle typu vaší pleti. Zavolejte mi, nebo napište na WhatsApp — najdeme čas, který vám vyhovuje.</p>
+      <h2>Zavolejte a domluvíme termín přímo pro Vás</h2>
+      <p>Ráda Vám poradím s výběrem péče podle typu Vaší pleti. Zavolejte mi, nebo napište na WhatsApp — najdeme čas, který Vám vyhovuje.</p>
+      <p class="fineprint">Salon funguje jen na objednání.</p>
       <div class="contact-actions">
         <a class="btn btn-phone" href="tel:+420775502224" aria-label="Zavolat na +420 775 502 224">
           <span aria-hidden="true" style="font-size: 22px;">✆</span> +420 775 502 224
@@ -1204,7 +1213,8 @@
     <div class="footer-meta">Praha 8 – Karlín · <a href="tel:+420775502224">+420 775 502 224</a> · <a href="https://wa.me/420775502224" target="_blank" rel="noopener">WhatsApp</a></div>
   </div>
   <div class="footer-legal">
-    <span>Radka Šoukalová · IČO: 01289306</span>
+    <span>Radka Šoukalová · IČO 01289306 · Adresa: Thámova 191/21, Praha&nbsp;8</span>
+    <a class="footer-privacy" href="/soukromi">Ochrana osobních údajů</a>
     <details id="o-recenzich" class="about-reviews">
       <summary>O recenzích <span aria-hidden="true">▾</span></summary>
       <p>Recenze jsou vybrané z našeho profilu na Google. Jejich autory neověřujeme, jména pro soukromí zkracujeme. Pokud byste svou recenzi chtěli odsud stáhnout, stačí nám napsat.</p>
