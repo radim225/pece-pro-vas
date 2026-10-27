@@ -1,0 +1,14 @@
+# Bez CSP: stránky mají inline styly a skripty (včetně vložení beaconu).
+# Přísná CSP by beacon nevložila, uvolněná by musela povolit
+# static.cloudflareinsights.com i connect-src na cloudflareinsights.com
+# a při neúplném seznamu by měření tiše spadlo.
+# Rám stránky hlídá X-Frame-Options. WhatsApp a tel: jsou odkazy, ne iframe.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

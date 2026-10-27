@@ -1465,10 +1465,9 @@
   })();
 </script>
 
-<!-- Vercel Web Analytics. Skript /_vercel/insights/script.js servíruje Vercel,
-     jen když je Web Analytics v projektu zapnuté. ?nesledovat uloží příznak
-     do localStorage dřív, než se skript vloží; beforeSend vrátí null, takže
-     se neodešle ani tato návštěva. ?sledovat příznak smaže. -->
+<!-- Cloudflare Web Analytics. Beacon se vkládá až po vyhodnocení opt-outu.
+     ?nesledovat uloží příznak peceprovas-nesledovat dřív, než se skript vloží.
+     ?sledovat příznak smaže. Když localStorage nejde použít, stránka dál funguje. -->
 <script>
   (function () {
     var KEY = 'peceprovas-nesledovat';
@@ -1502,19 +1501,12 @@
       optedOut = storageGet() === '1';
     }
 
-    window.va = window.va || function () {
-      (window.vaq = window.vaq || []).push(arguments);
-    };
-    window.va('beforeSend', function (event) {
-      if (optedOut || storageGet() === '1') return null;
-      return event;
-    });
-
     if (optedOut) return;
 
     var script = document.createElement('script');
     script.defer = true;
-    script.src = '/_vercel/insights/script.js';
+    script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    script.setAttribute('data-cf-beacon', '{"token": "13575038855e485ebb79e3d5c599fede"}');
     document.body.appendChild(script);
   })();
 </script>
