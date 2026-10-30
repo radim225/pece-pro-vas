@@ -476,6 +476,13 @@
   .row .amount { font-size: 15.5px; color: var(--accent-dark); font-weight: 700; white-space: nowrap; }
   .row .note { font-size: 12.5px; color: var(--muted); }
   .extras .fineprint { font-size: 13px; color: var(--muted); margin: 16px 0 0; font-style: italic; }
+  .extras-gift { margin-top: 20px; }
+  .extras > .gift {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 18px 32px;
+  }
+  .gift h3 { margin-bottom: 8px; }
+  .gift p { margin: 0; max-width: 560px; color: var(--ink-soft); font-size: 15.5px; line-height: 1.6; }
 
   /* ===== Contact ===== */
   .contact { background: var(--ink); color: var(--bg); padding: clamp(50px, 7vw, 96px) clamp(16px, 4vw, 64px); }
@@ -1138,6 +1145,15 @@
         <span class="amount">250 Kč</span>
       </div>
       <p class="fineprint">Šetrný voskový systém vhodný i pro citlivou pokožku.</p>
+    </div>
+  </div>
+  <div class="extras extras-gift">
+    <div class="gift" id="poukazy">
+      <div>
+        <h3>Dárkové poukazy</h3>
+        <p>Darujte chvíli péče o pleť. Dárkový poukaz připravím v jakékoliv hodnotě — k&nbsp;narozeninám, svátku nebo jen tak pro radost.</p>
+      </div>
+      <a class="btn btn-dark btn-book" href="tel:+420775502224" aria-label="Objednat dárkový poukaz telefonicky"><span aria-hidden="true">✆</span> Objednat poukaz</a>
     </div>
   </div>
 </section>
