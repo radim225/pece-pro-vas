@@ -1,7 +1,8 @@
 # Web kosmetického salonu Péče PRO VÁS — pravidla
 
 Jednostránkový statický web reálné firmy. Live: <https://www.peceprovas.cz>.
-Jediný `index.html`, žádný build step, žádné závislosti. Push do `main` = **okamžitý deploy na živý web**.
+Žádný build step, žádné závislosti, výstupní adresář je kořen repozitáře.
+Hosting: **Cloudflare Pages** (projekt napojený na GitHub). Vercel jede dočasně souběžně, dokud se nepřepne DNS — doména se nemění a `vercel.json` zůstává, ať Vercel dál funguje. Push do `main` pořád znamená **okamžitý deploy na živý web** (Vercel, a po napojení i Pages).
 Klientkou je Radimova mamka, která salon provozuje — její formulace mají přednost před našimi.
 
 ## Slovník — závazné
@@ -39,10 +40,11 @@ Text recenzí z Google profilu se přebírá **doslova** (pole `RECENZE` na konc
 
 ## Technické pasti
 
-- **Přípony `.JPG`/`.JPEG` velkými písmeny** (`main.JPG`, `product.JPG`, `bruno_katalog.JPEG`, `tonikum_bruno.JPEG`). Vercel běží na case-sensitive filesystemu — `main.jpg` vrátí 404. Nepřejmenovávej bez úpravy `index.html`.
+- **Přípony `.JPG`/`.JPEG` velkými písmeny** (`main.JPG`, `product.JPG`, `bruno_katalog.JPEG`, `tonikum_bruno.JPEG`). Cloudflare Pages i Vercel běží na case-sensitive filesystemu — `main.jpg` vrátí 404. Nepřejmenovávej bez úpravy `index.html`.
 - **Push velkých binárek přes HTTP padá** na `send-pack: unexpected disconnect`. Prochází s `git -c http.postBuffer=524288000 push origin main`. **Vždy ověř, že push dosedl:** `git rev-list --left-right --count origin/main...HEAD` musí dát `0 0` (git umí zavádějícně hlásit „Everything up-to-date").
 - **Rám fotky se přizpůsobuje fotce, ne naopak.** Poměry stran v CSS odpovídají nativním rozměrům, aby `object-fit: cover` neuřízl vysázený text na bannerech ani polovinu srovnávacího snímku před/po.
-- **Vercel Web Analytics** se na statickém HTML nevloží sám. Inline skript před `</body>` ho vloží (`/_vercel/insights/script.js`) jen když v `localStorage` není příznak `peceprovas-nesledovat`. `?nesledovat` příznak uloží dřív, než odejde pageview (`beforeSend` vrací `null` a skript se nenačte); `?sledovat` ho smaže. Když `localStorage` nejde použít, stránka musí dál fungovat. Inline skript nemazat a nevracet nepodmíněný `<script src>`, jinak se opt-out obejde a měření tiše umře.
+- **Cloudflare Web Analytics** (místo Vercel Web Analytics). Inline skript před `</body>` vloží beacon `https://static.cloudflareinsights.com/beacon.min.js` jen když v `localStorage` není příznak `peceprovas-nesledovat`. `?nesledovat` příznak uloží dřív, než se beacon vloží; `?sledovat` ho smaže. Když `localStorage` nejde použít, stránka musí dál fungovat. Inline skript nemazat a nevracet nepodmíněný `<script src>`, jinak se opt-out obejde a měření tiše umře.
+- **`_redirects` neumí přesměrování podle hostitele.** `kosmetikamamka.vercel.app` → `https://www.peceprovas.cz/` zůstává ve `vercel.json`. `/soukromi` servíruje Pages ze `soukromi.html` samo; `404.html` v kořeni je stránka pro neznámé cesty se stavem 404.
 
 ## Jak ověřovat změny
 
