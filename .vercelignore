@@ -1,0 +1,3 @@
+# Na živý web nepatří: skripty a CI.
+scripts/
+.github/

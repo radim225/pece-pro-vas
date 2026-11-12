@@ -31,6 +31,8 @@ Kontrola před commitem: `grep -n -i -E "openingHours|otevírací" index.html` m
 
 Text recenzí z Google profilu se přebírá **doslova** (pole `RECENZE` na konci `index.html`), nic se nezkracuje ani neupravuje. **Jméno autora jen zkrácené** na křestní + iniciálu příjmení přesně podle podpisu na Googlu („Daniela F.“), nic nedomýšlet. Na žádost autora recenzi i jméno hned odstranit. Pod průměrem zůstává poznámka „Výběr z recenzí na Google. Neověřujeme, zda autoři službu využili.“ *(Radim, #11, 2026-10-16 21:34)* Do schema.org se nedává `aggregateRating`: Google hvězdičky z vlastních recenzí firmy na jejím webu nezobrazuje.
 
+Pole needituj ručně, plní ho `scripts/recenze_sync.py` (konfigurace `scripts/recenze.json`, zdroj `maps-public` jen pro test, cílově `gbp-api`). GitHub Action `Recenze sync` ho jednou týdně spustí a při změně otevře PR `recenze/auto`. Merge dělá člověk. Lokálně na macOS s Pythonem z python.org: `SSL_CERT_FILE=/etc/ssl/cert.pem python3 scripts/recenze_sync.py --check`. `scripts/` a `.github/` jsou ve `.vercelignore`, na web nejdou.
+
 ## Popisky produktů a ošetřujících úkonů
 
 **Piš jen to, co je doložitelné** — text na obalu produktu nebo už existující text webu. Nic nedomýšlej, nedopočítávej texturu ani účinky z fotky. Dřívější návrh obsahoval smyšlený claim („posilují přirozenou obranu pleti"), faktickou chybu („tělové mléko", ačkoli na tubě stojí jen `BODY`) a claim přiřčený produktům, na kterých natištěný není. U kosmetiky na webu reálné firmy je to kategorie chyb, která se nesmí dostat ven.
