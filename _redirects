@@ -1,0 +1,9 @@
+# Host podmínka z vercel.json sem nejde.
+# Pages _redirects nepodporuje domain-level redirect
+# (kosmetikamamka.vercel.app → https://www.peceprovas.cz/ a totéž pro cesty).
+# Na Cloudflare ten host neexistuje; pravidlo dál drží vercel.json.
+#
+# /soukromi Pages servíruje ze soukromi.html samo (adresa bez přípony).
+# Kořenové 404.html Pages použije pro neznámou cestu a vrátí stav 404.
+# Proxy /soukromi → /soukromi.html sem nepatří: Pages zároveň
+# přesměrovává /soukromi.html na /soukromi.
