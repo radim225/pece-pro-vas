@@ -2,7 +2,7 @@
 
 Jednostránkový statický web reálné firmy. Live: <https://www.peceprovas.cz>.
 Žádný build step, žádné závislosti, výstupní adresář je kořen repozitáře.
-Hosting: **Cloudflare Pages** (projekt napojený na GitHub). Vercel jede dočasně souběžně, dokud se nepřepne DNS — doména se nemění a `vercel.json` zůstává, ať Vercel dál funguje. Push do `main` pořád znamená **okamžitý deploy na živý web** (Vercel, a po napojení i Pages).
+Hosting: **Cloudflare Pages** (projekt `peceprovas` na účtu peceprovas@gmail.com, napojený na GitHub). Od 14. 11. 2026 vede `www` ve Websupportu (Active24, účet mamky) CNAME na `peceprovas.pages.dev`; dřív `0ee3286100abb1d2.vercel-dns-017.com`, poznámka je přímo u záznamu. Apex `peceprovas.cz` zůstává A záznamem na Vercelu, který jen přesměruje 308 na www, a `vercel.json` proto zůstává. MX/SPF/DMARC (Active24 mail) se nemění. Push do `main` = **okamžitý deploy na živý web**.
 Klientkou je Radimova mamka, která salon provozuje — její formulace mají přednost před našimi.
 
 ## Slovník — závazné
