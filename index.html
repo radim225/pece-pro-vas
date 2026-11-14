@@ -1518,6 +1518,11 @@
       optedOut = storageGet() === '1';
     }
 
+    // Cookie nastavuje functions/_middleware.js, vydrží i tam, kde Safari localStorage smaže.
+    if (!optedOut && document.cookie.split(';').some(function (c) { return c.trim() === KEY + '=1'; })) {
+      optedOut = true;
+    }
+
     if (optedOut) return;
 
     var script = document.createElement('script');
