@@ -15,6 +15,11 @@ export async function onRequest(context) {
   if (url.hostname === 'peceprovas.pages.dev') {
     return Response.redirect('https://www.peceprovas.cz' + url.pathname + url.search, 301);
   }
+  // Jedna adresa na stránku: /soukromi/ → /soukromi (kořen / zůstává).
+  if (url.pathname.length > 1 && url.pathname.endsWith('/')) {
+    url.pathname = url.pathname.replace(/\/+$/, '');
+    return Response.redirect(url.toString(), 301);
+  }
 
   const hasCookie = (request.headers.get('Cookie') || '')
     .split(';').some((c) => c.trim() === COOKIE + '=1');
