@@ -353,6 +353,25 @@
     font-family: 'EB Garamond', Georgia, serif; font-size: 18px; font-weight: 700;
   }
   .steps .text { font-size: 15px; line-height: 1.5; color: var(--ink-soft); padding-top: 5px; text-wrap: pretty; }
+  .ritual-photos { max-width: 1080px; margin: clamp(32px, 5vw, 56px) auto 0; display: grid; gap: 12px; }
+  .rp-row { display: flex; gap: 12px; }
+  .rp-row figure { margin: 0; flex: var(--r) 1 0; min-width: 0; }
+  .rp-row img { width: 100%; height: auto; border-radius: 14px; }
+  .rp-row figcaption { font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+  /* Na mobilu by pět fotek pod sebou bylo moc dlouhých — pás na posun jako u produktů. */
+  @media (max-width: 700px) {
+    .ritual-photos {
+      display: flex; gap: 12px; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory; scrollbar-width: none;
+      margin-inline: calc(clamp(16px, 4vw, 64px) * -1);
+      padding: 0 clamp(16px, 4vw, 64px) 4px;
+      scroll-padding-inline: clamp(16px, 4vw, 64px);
+    }
+    .ritual-photos::-webkit-scrollbar { display: none; }
+    .rp-row { display: contents; }
+    .rp-row figure { flex: 0 0 auto; scroll-snap-align: start; }
+    .rp-row img { width: auto; height: 210px; }
+  }
 
   /* ===== Produkty ===== */
   .products-head {
@@ -1011,6 +1030,19 @@
       <li><span class="n" aria-hidden="true">5</span><span class="text">Maska dle typu pleti, maska na dekolt a oční okolí.</span></li>
       <li><span class="n" aria-hidden="true">6</span><span class="text">Závěrečná péče — pleť je odpočatá a rozzářená.</span></li>
     </ol>
+  </div>
+  <!-- Fotky ze salonu v pořadí kroků 4–6. Výška řádku se srovná přes flex-grow
+       = poměr stran fotky (--r), takže nic se neořezává. -->
+  <div class="ritual-photos">
+    <div class="rp-row">
+      <figure style="--r: 1.247"><img src="Fotky/ritual-serum.webp" alt="Kapání séra kapátkem na čelo klientky" width="500" height="401" loading="lazy" decoding="async"><figcaption>Sérum</figcaption></figure>
+      <figure style="--r: 1.606"><img src="Fotky/ritual-masaz.webp" alt="Relaxační masáž obličeje" width="750" height="467" loading="lazy" decoding="async"><figcaption>Masáž obličeje</figcaption></figure>
+    </div>
+    <div class="rp-row">
+      <figure style="--r: 1.610"><img src="Fotky/ritual-maska.webp" alt="Nanášení masky štětcem" width="752" height="467" loading="lazy" decoding="async"><figcaption>Maska</figcaption></figure>
+      <figure style="--r: 1.239"><img src="Fotky/ritual-sundani.webp" alt="Odstranění masky houbičkou" width="497" height="401" loading="lazy" decoding="async"><figcaption>Odstranění masky</figcaption></figure>
+      <figure style="--r: 1.234"><img src="Fotky/ritual-krem.webp" alt="Nanesení závěrečného krému na obličej" width="495" height="401" loading="lazy" decoding="async"><figcaption>Závěrečný krém</figcaption></figure>
+    </div>
   </div>
 </section>
 
