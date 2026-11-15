@@ -21,10 +21,17 @@
       ],
       "destination": "https://www.peceprovas.cz/:path*",
       "permanent": true
+    },
+    {
+      "source": "/soukromi/",
+      "destination": "/soukromi",
+      "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/soukromi", "destination": "/soukromi.html" },
-    { "source": "/soukromi/", "destination": "/soukromi.html" }
+    {
+      "source": "/soukromi",
+      "destination": "/soukromi.html"
+    }
   ]
 }
